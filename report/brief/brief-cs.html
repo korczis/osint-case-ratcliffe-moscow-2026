@@ -605,7 +605,7 @@
       <h2>Pozadí osob a screening</h2>
     </div>
     <div class="section-body">
-      <p style="font-size:0.88rem;color:var(--muted);margin-bottom:1.4rem;">OSINT/DD vrstva platformy Prismatic je z ~95 % vázaná pouze na české rejstříky (ARES, Justice.cz, ISIR) a na tento případ se nehodí. Globálně relevantní třídy nástrojů — sankční adaptéry a GDELT — byly níže spuštěny jako manuální OSINT ekvivalenty.</p>
+      <p style="font-size:0.88rem;color:var(--muted);margin-bottom:1.4rem;">Interní due-diligence toolkit analytika je z ~95 % vázaný pouze na české rejstříky (ARES, Justice.cz, ISIR) a na tento případ se nehodí. Globálně relevantní třídy nástrojů — sankční adaptéry a GDELT — byly níže spuštěny jako manuální OSINT ekvivalenty.</p>
 
       <div class="entity-cols" style="margin-bottom:1.6rem;">
         <div class="entity-group">
@@ -741,8 +741,8 @@
         </div>
       </div>
 
-      <h3 style="font-family:var(--mono);font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin:1.8rem 0 0.8rem;font-weight:600;">Hloubkový průzkum Prismatic OSINT/DD — ultracode workflow</h3>
-      <p style="font-size:0.88rem;color:var(--muted);margin-bottom:1rem;">Pětisměrný paralelní Workflow sweep napříč 33 OSINT/DD aplikacemi a 136 zdrojovými adaptéry Prismatic platformy, plus konsolidační průchod a cílené ověření spustitelnosti. 92 ze 136 adaptérů je skutečně globálních (nevázaných na ČR), ale téměř žádný nepřidává reálnou novou schopnost nad rámec toho, co už využívají §06/§08. Vynikly dva:</p>
+      <h3 style="font-family:var(--mono);font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin:1.8rem 0 0.8rem;font-weight:600;">Průzkum pomocných nástrojů — multiagentní sweep</h3>
+      <p style="font-size:0.88rem;color:var(--muted);margin-bottom:1rem;">Pětisměrný paralelní agentní sweep napříč interním due-diligence toolkitem analytika (33 modulů, 136 zdrojových adaptérů), plus konsolidační průchod a cílené ověření spustitelnosti. 92 ze 136 adaptérů je skutečně globálních (nevázaných na ČR), ale téměř žádný nepřidává reálnou novou schopnost nad rámec toho, co už využívají §06/§08. Vynikly dva:</p>
       <div class="kj-list">
         <div class="kj-item">
           <span class="kj-id">Wayback Machine</span>
@@ -755,12 +755,12 @@
           <span class="kj-id">NewsAPI</span>
           <div>
             <span class="pill low">Blokováno — chybí API klíč</span>
-            <p class="kj-text">Přidal by druhý, nezávislý zdroj zpravodajského pokrytí na úrovni článků vedle GDELT. Vyžaduje <code>NEWSAPI_API_KEY</code>, který se v žádném sledovaném env souboru tohoto dev prostředí nevyskytuje — vyžadovalo by registraci u třetí strany. Nesledováno dál; mimo rozsah session.</p>
+            <p class="kj-text">Přidal by druhý, nezávislý zdroj zpravodajského pokrytí na úrovni článků vedle GDELT. Vyžaduje klíč NewsAPI, který nebyl k dispozici — vyžadovalo by registraci u třetí strany. Nesledováno dál; mimo rozsah session.</p>
           </div>
         </div>
       </div>
-      <p style="font-size:0.88rem;color:var(--ink-soft);margin-top:1.2rem;"><strong style="color:var(--ink);">Poslední dva kandidáti prověřeni a vyřazeni.</strong> <code>court_records.ex</code>: dokumentace tvrdí multi-jurisdikční pokrytí, kód ale implementuje jen český InfoSoud — větev pro EU/CURIA je mrtvý stub a jakákoli jiná jurisdikce (včetně USA/Ruska) spadá do handleru, který také vrací prázdno. Strukturálně neschopný přinést cokoliv o Zimmermanovi, bez ohledu na API klíč. <code>intelligencex.ex</code> (hledání v leacích/darkwebu): funkčně kompletní implementace, ale blokovaná chybějícím, placeným <code>INTELLIGENCEX_API_KEY</code> — stejná provozní blokáda jako u NewsAPI. OSINT/DD povrch Prismatic platformy je nyní pro tento případ považován za vyčerpaný.</p>
-      <p class="caveat" style="margin-top:0.8rem;padding-top:1rem;">Sweepem dále vyřazeno: všech 41 adaptérů vázaných na české rejstříky a CZ-vázané aplikace (již dříve zjištěno); všech 546 person "OSINT specialist" v <code>.claude/agents/*</code>, potvrzeno jako čistě textové šablony bez napojení na API/přihlašovací údaje; "special forces" skilly (falcon-strike, siege-master, green-beret, navy-seal, delta-force, ghost-recon) — všechny směrují na stejný obecný command agent bez reálné datové vrstvy; komerční adaptéry pro obohacení osobních dat (Pipl, FullContact, Clearbit, ZoomInfo) — nízký přínos pro již veřejné osoby.</p>
+      <p style="font-size:0.88rem;color:var(--ink-soft);margin-top:1.2rem;"><strong style="color:var(--ink);">Poslední dva kandidáti prověřeni a vyřazeni.</strong> Adaptér soudních záznamů: dokumentace tvrdí multi-jurisdikční pokrytí, kód ale implementuje jen český InfoSoud — větev pro EU/CURIA je mrtvý stub a jakákoli jiná jurisdikce (včetně USA/Ruska) spadá do handleru, který také vrací prázdno. Strukturálně neschopný přinést cokoliv o Zimmermanovi, bez ohledu na API klíč. Adaptér IntelligenceX (hledání v leacích/darkwebu): funkčně kompletní implementace, ale blokovaná chybějícím, placeným API klíčem — stejná provozní blokáda jako u NewsAPI. Průzkum pomocných nástrojů je nyní pro tento případ považován za vyčerpaný.</p>
+      <p class="caveat" style="margin-top:0.8rem;padding-top:1rem;">Sweepem dále vyřazeno: všech 41 adaptérů vázaných na české rejstříky a CZ-vázané aplikace (již dříve zjištěno); několik set person "OSINT specialist", potvrzeno jako čistě textové šablony bez napojení na API/přihlašovací údaje; tematicky pojmenované pomocné skilly, které všechny směrují na stejný obecný command agent bez reálné datové vrstvy; komerční adaptéry pro obohacení osobních dat (Pipl, FullContact, Clearbit, ZoomInfo) — nízký přínos pro již veřejné osoby.</p>
 
       <h3 style="font-family:var(--mono);font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin:1.8rem 0 0.8rem;font-weight:600;">Navazující sledování na žádost uživatele: správné URL vzory + zbylé indikátory</h3>
       <div class="kj-list">

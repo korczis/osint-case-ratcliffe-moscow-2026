@@ -1,0 +1,43 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(just:*)",
+      "Bash(scripts/*)",
+      "Bash(jq:*)",
+      "Bash(yq:*)",
+      "Bash(curl:*)",
+      "Bash(python3:*)",
+      "Bash(weasyprint:*)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push origin:*)",
+      "Bash(gh run:*)",
+      "Bash(gh api:*)",
+      "WebSearch",
+      "WebFetch",
+      "Skill(update-case)",
+      "Skill(publish)",
+      "Skill(new-case)"
+    ],
+    "deny": [
+      "Bash(git push --force:*)",
+      "Bash(rm -rf:*)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit|Bash",
+        "hooks": [{ "type": "command", "command": "$CLAUDE_PROJECT_DIR/.claude/hooks/guard-edits.sh" }]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [{ "type": "command", "command": "$CLAUDE_PROJECT_DIR/.claude/hooks/post-check.sh" }]
+      }
+    ]
+  }
+}

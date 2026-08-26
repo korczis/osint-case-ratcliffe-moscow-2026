@@ -605,7 +605,7 @@
       <h2>Backgrounds &amp; Screening</h2>
     </div>
     <div class="section-body">
-      <p style="font-size:0.88rem;color:var(--muted);margin-bottom:1.4rem;">Prismatic's OSINT/DD layer is ~95% Czech-registry-only (ARES, Justice.cz, ISIR) and inapplicable to this case. The globally-relevant tool classes — sanctions adapters and GDELT — were run as manual OSINT equivalents below.</p>
+      <p style="font-size:0.88rem;color:var(--muted);margin-bottom:1.4rem;">The analyst's in-house due-diligence toolkit is ~95% Czech-registry-only (ARES, Justice.cz, ISIR) and inapplicable to this case. The globally-relevant tool classes — sanctions adapters and GDELT — were run as manual OSINT equivalents below.</p>
 
       <div class="entity-cols" style="margin-bottom:1.6rem;">
         <div class="entity-group">
@@ -741,26 +741,26 @@
         </div>
       </div>
 
-      <h3 style="font-family:var(--mono);font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin:1.8rem 0 0.8rem;font-weight:600;">Prismatic OSINT/DD deep survey — ultracode workflow</h3>
-      <p style="font-size:0.88rem;color:var(--muted);margin-bottom:1rem;">A 5-way parallel Workflow sweep across Prismatic's 33 OSINT/DD apps and 136 source adapters, plus a consolidation pass and a targeted viability check. 92 of 136 adapters are genuinely global (not Czech-bound), but almost none add real new capability here beyond what §06/§08 already use. Two stood out:</p>
+      <h3 style="font-family:var(--mono);font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin:1.8rem 0 0.8rem;font-weight:600;">Auxiliary-tooling survey — multi-agent sweep</h3>
+      <p style="font-size:0.88rem;color:var(--muted);margin-bottom:1rem;">A 5-way parallel agent sweep across the analyst's in-house due-diligence toolkit (33 modules, 136 source adapters), plus a consolidation pass and a targeted viability check. 92 of 136 adapters are genuinely global (not Czech-bound), but almost none add real new capability here beyond what §06/§08 already use. Two stood out:</p>
       <div class="kj-list">
         <div class="kj-item">
           <span class="kj-id">Wayback Machine</span>
           <div>
             <span class="pill high">Runnable now, no API key</span>
-            <p class="kj-text">Queried live via direct CDX API calls (bypassing full app boot): <strong>Kremlin.ru</strong> — exactly 1 snapshot in the visit window, no evidence of multiple revisions; a press/briefing subpath query returned zero results (not archived, or different URL scheme). <strong>CIA.gov director page</strong> — 1 snapshot, same day as the visit, no evidence of alteration. <strong>CIA.gov press-releases section</strong> — zero results. <strong>This report's own BBC source article</strong> — exactly 1 capture, 1 content digest, no evidence of silent post-publication edits. <em>Negative result, logged as a finding</em>: no evidence of silently edited/taken-down official pages found, though path-level Wayback coverage is incomplete.</p>
+            <p class="kj-text">Queried live via direct CDX API calls: <strong>Kremlin.ru</strong> — exactly 1 snapshot in the visit window, no evidence of multiple revisions; a press/briefing subpath query returned zero results (not archived, or different URL scheme). <strong>CIA.gov director page</strong> — 1 snapshot, same day as the visit, no evidence of alteration. <strong>CIA.gov press-releases section</strong> — zero results. <strong>This report's own BBC source article</strong> — exactly 1 capture, 1 content digest, no evidence of silent post-publication edits. <em>Negative result, logged as a finding</em>: no evidence of silently edited/taken-down official pages found, though path-level Wayback coverage is incomplete.</p>
           </div>
         </div>
         <div class="kj-item">
           <span class="kj-id">NewsAPI</span>
           <div>
             <span class="pill low">Blocked — missing API key</span>
-            <p class="kj-text">Would have added a second, independent article-level news source alongside GDELT. Requires <code>NEWSAPI_API_KEY</code>, present in no tracked env file in this dev environment — would need third-party signup. Not pursued; out of session scope.</p>
+            <p class="kj-text">Would have added a second, independent article-level news source alongside GDELT. Requires a NewsAPI key, which was not available — would need third-party signup. Not pursued; out of session scope.</p>
           </div>
         </div>
       </div>
-      <p style="font-size:0.88rem;color:var(--ink-soft);margin-top:1.2rem;"><strong style="color:var(--ink);">Two remaining candidates checked and ruled out.</strong> <code>court_records.ex</code>: its docstring claims multi-jurisdiction coverage, but the code implements only Czech InfoSoud — the EU/CURIA branch is a dead stub, and any non-CZ/EU jurisdiction (including US/Russia) falls through to a handler that also returns nothing. Structurally incapable of surfacing anything about Zimmerman, regardless of API key. <code>intelligencex.ex</code> (leak/darkweb search): a functionally complete implementation, but blocked on a missing, paid <code>INTELLIGENCEX_API_KEY</code> — same operational block as NewsAPI. Prismatic's OSINT/DD surface is now considered exhausted for this case.</p>
-      <p class="caveat" style="margin-top:0.8rem;padding-top:1rem;">Also ruled out by the sweep: all 41 Czech-registry adapters and CZ-bound apps (already established); all 546 <code>.claude/agents/*</code> "OSINT specialist" personas, confirmed prose-only stubs with no wired API/credential binding; the "special forces" skills (falcon-strike, siege-master, green-beret, navy-seal, delta-force, ghost-recon) — all route to the same generic command agent with no real data layer; commercial person-enrichment adapters (Pipl, FullContact, Clearbit, ZoomInfo) — low yield for already-public figures.</p>
+      <p style="font-size:0.88rem;color:var(--ink-soft);margin-top:1.2rem;"><strong style="color:var(--ink);">Two remaining candidates checked and ruled out.</strong> Court-records adapter: its docstring claims multi-jurisdiction coverage, but the code implements only Czech InfoSoud — the EU/CURIA branch is a dead stub, and any non-CZ/EU jurisdiction (including US/Russia) falls through to a handler that also returns nothing. Structurally incapable of surfacing anything about Zimmerman, regardless of API key. IntelligenceX adapter (leak/darkweb search): a functionally complete implementation, but blocked on a missing, paid API key — same operational block as NewsAPI. The auxiliary-tooling survey is now considered exhausted for this case.</p>
+      <p class="caveat" style="margin-top:0.8rem;padding-top:1rem;">Also ruled out by the sweep: all 41 Czech-registry adapters and CZ-bound apps (already established); several hundred "OSINT specialist" agent personas, confirmed prose-only stubs with no wired API/credential binding; thematically-named helper skills that all route to the same generic command agent with no real data layer; commercial person-enrichment adapters (Pipl, FullContact, Clearbit, ZoomInfo) — low yield for already-public figures.</p>
 
       <h3 style="font-family:var(--mono);font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin:1.8rem 0 0.8rem;font-weight:600;">Follow-up on user request: correct URL patterns + remaining indicators</h3>
       <div class="kj-list">

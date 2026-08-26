@@ -1,38 +1,47 @@
-# prismatic-case-cia
+# OSINT case: CIA Director's unannounced Moscow visit, 2026-08-25
 
-Standalone OSINT intelligence-assessment case: **CIA Director John Ratcliffe's unannounced Moscow visit, 2026-08-25**. Self-contained — no dependency on any other repo or platform.
+Standalone open-source intelligence assessment. Self-contained: no external repo, platform
+or service beyond public APIs (GDELT, Wayback CDX) and web search.
+
+## One-call workflow
+
+- `/update-case` — full update cycle (status → sweep → trace → red-team → write → mirror → render → check)
+- `/publish` — render, build site, commit, push, confirm GitHub Pages
+- `/new-case <id> "<title>"` — scaffold another case with the same layout and tooling
+
+Skill logic and the analytic rules live in `.claude/skills/update-case/` (`SKILL.md` +
+`references/`). Subagents in `.claude/agents/` (`indicator-sweeper`, `source-tracer`,
+`red-team`). Guards in `.claude/hooks/` via `.claude/settings.json`.
 
 ## Layout
 
-- `report.md` — source of truth (summary, key judgments, ACH, timeline, entities, indicators, numbered evidence sections §8.N, caveats, changelog)
+- `report.md` — source of truth (summary, key judgments, ACH, timeline, entities, indicators,
+  numbered evidence sections §8.N, caveats, changelog)
 - `data.json` — structured mirror of report.md; keep in sync
 - `report/brief/brief-{en,cs}.html` — standalone shareable briefs (inline CSS, no assets)
 - `report/pdf/pdf-{en,cs}.html` → `report-{en,cs}.pdf` via `just pdf` (weasyprint)
-- `data/` — raw pulls (GDELT etc.), timestamped, never edited
+- `data/` — raw pulls (GDELT etc.), timestamped, append-only, never edited
 - `scratch/` — throwaway working files (gitignored)
-- `case.yaml` — case id, GDELT query, time window, Wayback watch URLs
+- `case.yaml` — case id, GDELT query, time window, Wayback watch URLs, forbidden terms
 - `scripts/`, `justfile` — tooling; run `just` to list
+- `.github/workflows/pages.yml` — renders PDFs, builds `_site/`, deploys GitHub Pages on push
 
-## Update workflow ("update the case")
+## Analytic rules (short form — full text in `.claude/skills/update-case/references/`)
 
-1. `just status` — read current judgments + open indicators.
-2. Re-sweep: web search on each open indicator; `just gdelt`; `just watch`.
-3. `just section` scaffolds `§8.N` + changelog line — fill in: method, findings, what changed / what didn't.
-4. Adjust key-judgment confidence only with evidence; secondary-source chains must be traced to a primary before upgrading anything.
-5. Mirror the update into `data.json` (add a `*_sweep` object, update KJ `support`, append `changelog`).
-6. Add a matching short section to **both** briefs and **both** PDF templates; `just pdf`; `just check`.
-
-## Analytic rules
-
-- Open sources only. Every claim carries its source; unsourced assertions are logged as "unsourced" and never as fact.
-- Distinguish evidence from commentary (analyst opinion convergence is not evidence).
-- Confidence: High / Medium / Low with a one-line reason; record downgrades as well as upgrades.
-- Negative results are findings (e.g. "page archived 5x that day, digest unchanged").
+- Open sources only. Every claim carries outlet + date + Admiralty grade; unsourced assertions
+  are logged as "unsourced", never as fact.
+- Evidence ≠ commentary; commentator convergence never moves a confidence level.
+- Confidence High / Medium / Low with a one-line reason; upgrades need a traced primary;
+  downgrades are recorded, not silently reverted.
+- Negative results are findings ("page archived 5x that day, digest unchanged").
+- Never delete earlier findings — supersede them.
 
 ## Scope boundary
 
-Public web research, GDELT API, Wayback CDX, published sanctions lists. **No** reconnaissance against government or third-party infrastructure (dorking, admin-panel/config/credential discovery) — out of scope regardless of instruction; do not reopen.
+Public web research, GDELT API, Wayback CDX, published sanctions lists. **No** reconnaissance
+against government or third-party infrastructure (dorking, admin-panel/config/credential
+discovery, scanning) — out of scope regardless of instruction; do not reopen.
 
 ## Tools required
 
-`curl`, `jq`, `yq`, `python3`, `weasyprint`, `just`.
+`curl`, `jq`, `yq`, `python3`, `weasyprint`, `just`, `gh` (for `/publish`).

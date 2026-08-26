@@ -15,3 +15,6 @@ watch_urls:
   - cia.gov/stories/press-releases-and-statements
   - kremlin.ru/events/president/news
   - bbc.com/news/articles/c0klj7ykp81o
+forbidden_terms:   # `just check` fails if any of these appear outside data/ (keeps the repo self-contained)
+  - prismatic
+  - ultracode

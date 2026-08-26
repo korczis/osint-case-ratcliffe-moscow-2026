@@ -137,15 +137,15 @@
   <li>Further unannounced high-level Moscow&ndash;Washington visits (indicates an ongoing back-channel vs. one-off).</li>
 </ul>
 
-<h2><span class="num">07</span>Prismatic OSINT/DD Deep Survey</h2>
-<p>An ultracode Workflow ran a 5-way parallel sweep across Prismatic's 33 OSINT/DD apps and 136 source adapters, followed by consolidation and viability checks. 92 of 136 adapters are genuinely global (not Czech-bound), but almost none added new capability beyond the GDELT/sanctions stack already in use. Two candidates were pursued:</p>
+<h2><span class="num">07</span>Auxiliary-Tooling Survey</h2>
+<p>A 5-way parallel agent sweep ran across the analyst's in-house due-diligence toolkit (33 modules, 136 source adapters), followed by consolidation and viability checks. 92 of 136 adapters are genuinely global (not Czech-bound), but almost none added new capability beyond the GDELT/sanctions stack already in use. Two candidates were pursued:</p>
 <div class="kj-item">
   <span class="id">Wayback Machine</span> <span class="pill high">Runnable, no key</span>
   <p>Queried live via direct CDX API calls: Kremlin.ru (1 snapshot in-window, no revisions), CIA.gov director page (1 snapshot, same day), CIA.gov press-releases (zero results), this report's BBC source article (1 capture, 1 digest — no silent edits). <em>Negative result, logged as a finding</em>: no evidence of altered/taken-down official pages.</p>
 </div>
 <div class="kj-item">
   <span class="id">NewsAPI / IntelligenceX / Court Records</span> <span class="pill low">Ruled out</span>
-  <p>NewsAPI and IntelligenceX both blocked on missing (and, for IntelligenceX, paid) API keys not present in this environment. Court Records' docstring claims multi-jurisdiction coverage but the code implements only Czech InfoSoud — structurally incapable of surfacing anything about the Zimmerman detainee thread, regardless of credentials.</p>
+  <p>NewsAPI and IntelligenceX both blocked on missing (and, for IntelligenceX, paid) API keys. Court Records' docstring claims multi-jurisdiction coverage but the code implements only Czech InfoSoud — structurally incapable of surfacing anything about the Zimmerman detainee thread, regardless of credentials.</p>
 </div>
 <div class="kj-item">
   <span class="id">Wayback, take two</span> <span class="pill high">Stronger negative result</span>

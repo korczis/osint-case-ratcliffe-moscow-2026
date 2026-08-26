@@ -20,9 +20,14 @@ section:       # scaffold next §8.N + changelog line in report.md
 pdf:           # render report/pdf/*.html -> PDF
     scripts/render-pdf.sh
 
-check:         # sanity: json valid, pdf templates + briefs have same section count
-    jq -e . data.json >/dev/null && echo "data.json ok"
-    @for f in report/brief/brief-en.html report/brief/brief-cs.html report/pdf/pdf-en.html report/pdf/pdf-cs.html; do printf '%-32s %s h2\n' "$f" "$(grep -c '<h2' $f)"; done
+check:         # gate: json valid, EN/CS parity, forbidden terms, changelog/section parity
+    scripts/check.sh
+
+site:          # build _site/ (index + briefs + PDFs + report) for GitHub Pages
+    scripts/build-site.sh
+
+serve:         # preview _site/ locally
+    python3 -m http.server -d _site 8080
 
 open:          # open case folder in Finder
     open .

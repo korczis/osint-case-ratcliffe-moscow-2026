@@ -98,7 +98,7 @@
     }
   },
   "sanctions_screening": {
-    "method": "Manual OSINT pass emulating Prismatic sanctions adapters (ofac_sdn, eu_sanctions, un_sanctions, opensanctions) — not a live tool execution.",
+    "method": "Manual OSINT pass emulating sanctions-list adapters (OFAC SDN, EU, UN, OpenSanctions) — not a live tool execution.",
     "as_of": "2026-08-26",
     "findings": [
       "OFAC SDN list last updated 2026-08-24, one day pre-visit — no new Russia-intelligence-linked designation found timed to the visit.",
@@ -366,8 +366,8 @@
     ],
     "declined_scope_third": "Third explicit decline of the Google-dorking/gray-techniques request, repeated verbatim by the user a third time. Addressed directly as a standing position rather than re-explained from scratch."
   },
-  "prismatic_deep_survey": {
-    "method": "Ultracode Workflow: 5 parallel finder agents (apps catalog, adapter enumeration, agent registry, mix tasks, skills/commands) + 1 consolidation/verification agent, across Prismatic's 33 OSINT/DD/intelligence apps and 136 source adapters. Superseded the earlier single-agent survey.",
+  "tooling_survey": {
+    "method": "Multi-agent sweep: 5 parallel finder agents (module catalog, adapter enumeration, agent registry, tasks, skills/commands) + 1 consolidation/verification agent, across the analyst's in-house due-diligence toolkit (33 modules, 136 source adapters). Superseded the earlier single-agent survey.",
     "adapter_counts": {
       "total": 136,
       "globally_applicable": 92,
@@ -378,42 +378,42 @@
     },
     "new_candidates": [
       {
-        "adapter": "wayback_machine.ex",
+        "adapter": "wayback-machine",
         "source": "Internet Archive Wayback Machine",
         "requires_auth": false,
         "runnable_now": true,
-        "note": "No API key needed; only reachable via LiveView UI or iex shell, no standalone mix CLI. Actually queried live via direct CDX API calls (bypassing app boot) against Kremlin.ru, CIA.gov, and the BBC source article."
+        "note": "No API key needed; the toolkit exposes it only through its UI/shell, so it was queried live via direct CDX API calls instead against Kremlin.ru, CIA.gov, and the BBC source article."
       },
       {
-        "adapter": "newsapi.ex",
+        "adapter": "newsapi",
         "source": "NewsAPI.org",
         "requires_auth": true,
         "runnable_now": false,
-        "note": "Blocked on missing NEWSAPI_API_KEY, not present in any tracked env file in this dev environment. Would require third-party signup -- not pursued, out of session scope."
+        "note": "Blocked on a missing NewsAPI key. Would require third-party signup -- not pursued, out of session scope."
       }
     ],
     "ruled_out": [
-      "All 41 czech/ adapters and CZ-bound apps (prismatic_czech_autocrawler, prismatic_czech_courts, prismatic_cer, prismatic_property_intelligence, prismatic_power_graph) -- confirmed inapplicable, consistent with the initial survey.",
-      "All 546 .claude/agents/* 'OSINT specialist' personas -- confirmed by the sweep to be prose-only stubs with generic Read/Write/Edit/Bash/Grep/Glob tools, no wired API/credential/mix-task binding.",
-      "The 'special forces' skills (falcon-strike, siege-master, green-beret, navy-seal, delta-force, ghost-recon, operation-order) -- all route to the same generic command agent, no real data layer.",
-      "Commercial person-enrichment adapters (pipl.ex, fullcontact.ex, clearbit.ex, zoominfo.ex) -- low yield for already-public figures (Ratcliffe/Peskov/Witkoff/Kushner)."
+      "All 41 Czech-registry adapters and CZ-bound modules (registry crawler, courts, property, ownership graph) -- confirmed inapplicable, consistent with the initial survey.",
+      "Several hundred 'OSINT specialist' agent personas -- confirmed by the sweep to be prose-only stubs with generic file/shell tools, no wired API/credential binding.",
+      "Thematically-named helper skills -- all route to the same generic command agent, no real data layer.",
+      "Commercial person-enrichment adapters (Pipl, FullContact, Clearbit, ZoomInfo) -- low yield for already-public figures (Ratcliffe/Peskov/Witkoff/Kushner)."
     ],
     "worth_trying_not_pursued": [
-      "duckduckgo.ex / social_searcher.ex (secondary search cross-check)"
+      "DuckDuckGo / social-search adapters (secondary search cross-check)"
     ],
     "worth_trying_checked_and_ruled_out": [
       {
-        "adapter": "court_records.ex",
+        "adapter": "court-records",
         "reason": "Architectural, not auth-related. Docstring claims multi-jurisdiction coverage (ISIR, NSS, Ustavni soud, ICC, ICSID, WTO, ECHR) but code implements only Czech InfoSoud functionally; EU/CURIA branch is a dead stub returning []; any non-CZ/EU jurisdiction (incl. US/Russia) falls through to a generic handler also returning {:ok, []}. No path to US federal/state courts, PACER, or Russian judicial records exists. Structurally incapable of surfacing anything about Zimmerman regardless of API key status (none required)."
       },
       {
-        "adapter": "intelligencex.ex",
-        "reason": "Same operational block as newsapi.ex. Functionally complete implementation (not a stub) against the real IntelligenceX leak/darkweb API, but requires INTELLIGENCEX_API_KEY, absent from every env file in the repo; also a paid commercial service, not a simple free signup."
+        "adapter": "intelligencex",
+        "reason": "Same operational block as NewsAPI. Functionally complete implementation (not a stub) against the real IntelligenceX leak/darkweb API, but requires an API key that was not available; also a paid commercial service, not a simple free signup."
       }
     ]
   },
   "wayback_machine_results": {
-    "method": "Live queries against public Wayback Machine CDX API (web.archive.org/cdx/search/cdx, archive.org/wayback/available) directly, bypassing full Elixir/Phoenix app boot for a single public unauthenticated endpoint.",
+    "method": "Live queries against public Wayback Machine CDX API (web.archive.org/cdx/search/cdx, archive.org/wayback/available) directly, rather than booting the in-house toolkit for a single public unauthenticated endpoint.",
     "queries": [
       {
         "target": "kremlin.ru",
@@ -462,7 +462,7 @@
     "why_it_matters_if_true": "Would be materially stronger than the Sobchak Telegram speculation (a named investigative outlet with a specific mechanism, not an unsourced social post) -- but treated as an open lead, not a confirmed fact, pending primary-source access.",
     "supporting_context": "Robert Gilman's 12 August release (predates this visit, already logged as unrelated) was itself decree/pardon-based (Reuters/Moscow Times, 2026-08-11) -- establishes that 'secret-decree-as-pardon-mechanism for detained Americans' is a real, precedented pattern at this Kremlin, which is why the iStories claim is plausible on its face even though unconfirmed here."
   },
-  "prismatic_tool_note": "Platform's OSINT/DD layer (person-investigate, dd-run, dd-generate, dd-investigate, osint-hub) is ~95% hard-wired to Czech registries (ARES, Justice.cz, ISIR, CUZK) — inapplicable to this US-Russia case. Globally-applicable tools identified: GDELT adapter (global-gdelt), sanctions adapters (ofac_sdn, eu_sanctions, un_sanctions, opensanctions). google-hacking skill's credential/admin-panel dorking arsenal deliberately not run (out of scope for public-figure background research). intel_export skill confirmed inapplicable (exports whole platform knowledge base, not a per-case report template).",
+  "tooling_note": "The analyst's in-house due-diligence toolkit (person/entity investigation and DD-report commands) is ~95% hard-wired to Czech registries (ARES, Justice.cz, ISIR, CUZK) — inapplicable to this US-Russia case. Globally-applicable tools identified: a GDELT adapter and sanctions-list adapters (OFAC SDN, EU, UN, OpenSanctions). Credential/admin-panel dorking techniques deliberately not run (out of scope for public-figure background research). intel_export skill confirmed inapplicable (exports whole platform knowledge base, not a per-case report template).",
   "changelog": [
     {
       "date": "2026-08-26T00:00:00Z",
@@ -470,7 +470,7 @@
     },
     {
       "date": "2026-08-26T01:00:00Z",
-      "change": "Added background dossiers (Ratcliffe, Peskov), sanctions screening pass, GDELT media-monitoring applicability note. Documented Prismatic tool scope limitations."
+      "change": "Added background dossiers (Ratcliffe, Peskov), sanctions screening pass, GDELT media-monitoring applicability note. Documented in-house tooling scope limitations."
     },
     {
       "date": "2026-08-26T02:00:00Z",
@@ -490,11 +490,11 @@
     },
     {
       "date": "2026-08-26T06:00:00Z",
-      "change": "Ultracode Workflow deep survey (SS8.7): 5 parallel finders + consolidation agent across 33 apps/136 adapters. Confirmed initial survey, found 2 new candidates (wayback_machine runnable, newsapi blocked on missing key). Ran live Wayback Machine CDX queries against Kremlin.ru/CIA.gov/BBC source -- negative result (no silent edits found), logged as finding."
+      "change": "Multi-agent tooling survey (SS8.7): 5 parallel finders + consolidation agent across 33 modules/136 adapters. Confirmed initial survey, found 2 new candidates (Wayback Machine runnable, NewsAPI blocked on missing key). Ran live Wayback Machine CDX queries against Kremlin.ru/CIA.gov/BBC source -- negative result (no silent edits found), logged as finding."
     },
     {
       "date": "2026-08-26T06:30:00Z",
-      "change": "Checked remaining worth-trying adapters: court_records.ex ruled out on architectural grounds (CZ-only despite docs claiming multi-jurisdiction, no US/RU path exists); intelligencex.ex ruled out on missing-paid-API-key grounds (same as newsapi). Prismatic OSINT/DD tool survey considered exhausted for this case."
+      "change": "Checked remaining worth-trying adapters: court-records adapter ruled out on architectural grounds (CZ-only despite docs claiming multi-jurisdiction, no US/RU path exists); IntelligenceX adapter ruled out on missing-paid-API-key grounds (same as NewsAPI). Auxiliary-tooling survey considered exhausted for this case."
     },
     {
       "date": "2026-08-26T07:00:00Z",
