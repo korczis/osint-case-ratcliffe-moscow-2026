@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Ratcliffe's Moscow Channel — Intelligence Assessment</title>
+<style>
+  @page {
+    size: A4;
+    margin: 22mm 18mm 20mm 18mm;
+    @bottom-left { content: "ratcliffe-moscow-2026 · OSINT working draft"; font-family: 'IBM Plex Mono', monospace; font-size: 8pt; color: #857c6d; }
+    @bottom-right { content: "Page " counter(page) " / " counter(pages); font-family: 'IBM Plex Mono', monospace; font-size: 8pt; color: #857c6d; }
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'IBM Plex Sans', Arial, sans-serif;
+    font-size: 10.3pt;
+    line-height: 1.5;
+    color: #1c1a17;
+    margin: 0;
+  }
+  h1, h2, h3 { font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; color: #1c1a17; }
+  h1 { font-size: 22pt; margin: 0 0 4pt; line-height: 1.15; }
+  .dek { font-size: 11pt; color: #4a453d; margin: 0 0 10pt; max-width: 90%; }
+  .meta { font-family: 'IBM Plex Mono', monospace; font-size: 8pt; color: #857c6d; margin-bottom: 4pt; }
+  .kicker { font-family: 'IBM Plex Mono', monospace; font-size: 8pt; letter-spacing: 0.1em; text-transform: uppercase; color: #a13d2e; margin-bottom: 8pt; }
+  header { border-bottom: 2pt solid #1c1a17; padding-bottom: 10pt; margin-bottom: 16pt; }
+  h2 { font-size: 14pt; margin: 20pt 0 8pt; border-bottom: 1pt solid #dcd5c6; padding-bottom: 4pt; }
+  h2 .num { font-family: 'IBM Plex Mono', monospace; font-weight: 400; font-size: 9pt; color: #857c6d; margin-right: 6pt; }
+  h3 { font-size: 10.5pt; margin: 12pt 0 4pt; }
+  p { margin: 0 0 8pt; orphans: 3; widows: 3; }
+  table { width: 100%; border-collapse: collapse; font-size: 9pt; margin-bottom: 10pt; }
+  th, td { text-align: left; padding: 5pt 6pt; border-bottom: 0.5pt solid #dcd5c6; vertical-align: top; }
+  thead th { font-family: 'IBM Plex Mono', monospace; font-size: 7.5pt; letter-spacing: 0.04em; text-transform: uppercase; color: #857c6d; border-bottom: 1pt solid #c7bea9; }
+  .pill { display: inline-block; font-family: 'IBM Plex Mono', monospace; font-size: 7.5pt; letter-spacing: 0.03em; text-transform: uppercase; padding: 1pt 6pt; border-radius: 8pt; font-weight: 600; margin-bottom: 3pt; }
+  .high { background: #e1ebe3; color: #2f6b4f; }
+  .medium { background: #efe4cd; color: #9c6b1f; }
+  .low { background: #ecdfd6; color: #8a5a44; }
+  .kj-item, .hyp-item { padding: 7pt 9pt; background: #fbf9f5; border: 0.5pt solid #dcd5c6; border-radius: 3pt; margin-bottom: 7pt; page-break-inside: avoid; }
+  .kj-item .id, .hyp-item .id { font-family: 'IBM Plex Mono', monospace; font-size: 8pt; color: #857c6d; }
+  ul.indicators { margin: 0 0 8pt; padding-left: 14pt; }
+  ul.indicators li { margin-bottom: 4pt; }
+  .verdict { background: #e7d9d0; padding: 7pt 9pt; border-radius: 3pt; font-size: 9.5pt; margin-top: 6pt; }
+  .verdict strong { color: #a13d2e; }
+  .source-row { font-size: 8.5pt; padding: 3pt 0; border-bottom: 0.5pt solid #dcd5c6; }
+  .source-outlet { font-family: 'IBM Plex Mono', monospace; font-size: 7.5pt; color: #857c6d; text-transform: uppercase; margin-right: 6pt; }
+  .caveat { font-size: 8.5pt; color: #857c6d; border-top: 0.5pt solid #dcd5c6; padding-top: 8pt; margin-top: 16pt; }
+  .changelog-item { font-size: 8.5pt; margin-bottom: 5pt; }
+  .changelog-item .date { font-family: 'IBM Plex Mono', monospace; color: #857c6d; }
+  .section-break { page-break-before: always; }
+  .decline-box { background: #fbf9f5; border-left: 3pt solid #a13d2e; padding: 6pt 9pt; font-size: 9pt; margin: 8pt 0; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="kicker">OSINT Assessment · Working Draft</div>
+  <h1>Ratcliffe's Moscow Channel</h1>
+  <p class="dek">The CIA director's unannounced eight-hour stop in Moscow, and the hypotheses competing to account for it.</p>
+  <div class="meta">Report ratcliffe-moscow-2026 · Updated 2026-08-26 · Open-source only</div>
+</header>
+
+<h2><span class="num">01</span>Summary</h2>
+<p>CIA Director John Ratcliffe made an unannounced, roughly eight-and-a-half-hour visit to Moscow on 25 August 2026 — a US government transport aircraft flying Joint Base Andrews to Moscow via Latvia. It is his first known trip to Russia as CIA director, and part of a broader pattern: the first visit by any senior US administration official to Russia since January 2026. The Kremlin confirmed contacts with Russian intelligence officials but denied any meeting with Putin. Neither government has disclosed what was discussed. Kyiv was pre-notified and asked to pause strikes on Russia for the visit's duration; strikes resumed within hours of Ratcliffe's departure.</p>
+
+<h2><span class="num">02</span>Key Judgments</h2>
+
+<div class="kj-item">
+  <span class="id">KJ1</span> <span class="pill high">High confidence</span>
+  <p>An intelligence-to-intelligence channel (CIA &harr; SVR/FSB), not a head-of-state meeting. Peskov's denial was unambiguous and repeated independently to TASS and the Washington Post ("no meetings of any kind with the Russian president"). A "Putin met Ratcliffe" framing that circulated traced back to a narrower claim — Putin cancelled a large scheduled event — inflated by secondary sources.</p>
+</div>
+<div class="kj-item">
+  <span class="id">KJ2</span> <span class="pill medium">Medium confidence</span>
+  <p>Primary topic likely Ukraine war de-escalation, or reviving the stalled peace process. Kyiv was pre-notified and asked to halt strikes; the pause-then-resume pattern (confirmed with operational detail — ~10 drones intercepted, 3 of 4 Moscow airports briefly restricted) shows this was tactical de-confliction for the visit, not a broader ceasefire signal.</p>
+</div>
+<div class="kj-item">
+  <span class="id">KJ3</span> <span class="pill low">Low&ndash;medium confidence</span>
+  <p>Iran and sanctions enforcement may have been a secondary topic — analyst speculation only. Trump has explicitly denied the visit was meant to seek Russian help reopening the Strait of Hormuz.</p>
+</div>
+<div class="kj-item">
+  <span class="id">KJ4</span> <span class="pill low">Low confidence</span>
+  <p>A humanitarian/detainee-release channel is possible. Charles Zimmerman — a US Navy veteran serving 5 years in Sochi over an undeclared firearm — is a real, independently-corroborated imprisoned American. A reported (but unverified — no primary source located) iStories claim links one of Putin's undisclosed decrees to a possible Zimmerman pardon. The Gilman precedent it echoes is itself a real decree/pardon-based release, for a different, earlier, unrelated case.</p>
+</div>
+<div class="kj-item">
+  <span class="id">KJ5</span> <span class="pill medium">Medium&ndash;high confidence</span>
+  <p>Choosing an intelligence rather than diplomatic channel signals deniability and lower political cost. Reinforced by context: Witkoff and Kushner's established Moscow channel (Putin meetings in Dec 2025 and Jan 2026) was postponed at this exact moment due to Kyiv security conditions — Ratcliffe's trip plausibly filled that gap for time-sensitive messaging.</p>
+</div>
+
+<h2><span class="num">03</span>Competing Hypotheses</h2>
+
+<div class="hyp-item">
+  <span class="id">H1</span> — <strong>Crisis de-escalation, or warning.</strong> WSJ reporting states Ratcliffe may have delivered a warning based on US intelligence of a new Russian mobilization wave and a possible provocation against NATO. Echoes the 2021 Burns precedent. <em>Best-evidenced hypothesis after verification.</em>
+</div>
+<div class="hyp-item">
+  <span class="id">H2</span> — <strong>Revive stalled peace talks.</strong> The diplomatic track (Witkoff/Kushner) has stagnated and was, at this moment, logistically stalled by Kyiv security conditions — CIA as an informal channel to keep momentum moving. <em>Most consistent with the broader evidence.</em>
+</div>
+<div class="hyp-item">
+  <span class="id">H3</span> — <strong>Transactional humanitarian diplomacy.</strong> Detainee-exchange groundwork. Weakened on verification: the reported "quite big" POW exchange is a routine series installment, not visit-triggered; the Zimmerman lead remains a single unsourced claim.
+</div>
+<div class="hyp-item">
+  <span class="id">H4</span> — <strong>Routine intelligence coordination</strong> (Trump's framing, "semi-routine"). Least likely: visitor seniority and operational visibility argue against routine — though this was the established channel stalled, not a deliberate substitution.
+</div>
+<div class="verdict"><strong>Assessment.</strong> H1 and H2 are not mutually exclusive and together remain the most likely explanation — a mix of warning and an attempt to keep dialogue moving while the usual channel was stuck, with H1 the better-evidenced of the two after verification. H3 is weaker than first assessed. H4 reads as expectation-management, not a complete account.</p>
+</div>
+
+<div class="section-break"></div>
+
+<h2><span class="num">04</span>Timeline</h2>
+<table>
+<thead><tr><th style="width:16%">Date</th><th>Event</th><th style="width:22%">Source</th></tr></thead>
+<tbody>
+<tr><td>2021-11</td><td>William Burns (CIA director) visits Moscow, warns against invading Ukraine.</td><td>BBC</td></tr>
+<tr><td>2022-02</td><td>Russia launches full-scale invasion, weeks after the Burns visit.</td><td>BBC</td></tr>
+<tr><td>2025-12</td><td>Witkoff/Kushner hold a 5-hour Putin meeting in Moscow — established diplomatic channel.</td><td>WaPo</td></tr>
+<tr><td>2026-01</td><td>Witkoff/Kushner report a further Putin meeting in Moscow; last senior US visit to Russia before Ratcliffe.</td><td>Bloomberg / Moscow Times</td></tr>
+<tr><td>2026 (undated)</td><td>Trump&ndash;Putin summit in Alaska; no breakthrough on the war.</td><td>BBC</td></tr>
+<tr><td>2026-08-23/24</td><td>Witkoff/Kushner's planned Kyiv visit postponed due to intensified Russian strikes; 6 European leaders + UK PM arrive in Kyiv regardless.</td><td>Ukrainska Pravda</td></tr>
+<tr><td>2026-08-25</td><td>Ratcliffe flies Andrews &rarr; Moscow via Latvia, ~8.5 hours on the ground. Putin signs 3 undisclosed decrees (605&ndash;607), contents unpublished.</td><td>CBS / CNN / WaPo / Kyiv Post</td></tr>
+<tr><td>2026-08-25</td><td>US asks Ukraine to pause strikes until the delegation clears Russian airspace.</td><td>CBS / Axios</td></tr>
+<tr><td>2026-08-25/26</td><td>Ukrainian drone strikes on Moscow resume hours after departure; ~10 drones intercepted, 3 of 4 airports briefly restricted.</td><td>ABC News</td></tr>
+<tr><td>2026-08-26</td><td>Peskov confirms the visit; denies a Putin meeting. Trump: "semi-routine," denies NATO-warning and Hormuz/Iran purposes.</td><td>BBC / Forbes</td></tr>
+<tr><td>2026-08-27</td><td>Russian state media reports a prospective "quite big" POW exchange in preparation — a routine series installment, no confirmed link to this visit.</td><td>Kyiv Post</td></tr>
+</tbody>
+</table>
+
+<h2><span class="num">05</span>Live GDELT Sweep</h2>
+<p>Direct query against the GDELT DOC 2.0 API — 75 sampled articles, <strong>15 source countries</strong> (US 41, India 10, Israel 5, UK 4, Pakistan/Ukraine/Germany/Russia 2 each, 7 more at 1), query "Ratcliffe Moscow," 2026-08-25/26. Confirms a high-salience global story. Tone is heavily negative: the densest bin (63 of 75 articles) sits around &minus;4, with a tail to &minus;8 ("hybrid war," nuclear-use speculation, NATO-test framing).</p>
+
+<h2><span class="num">06</span>Indicators to Watch</h2>
+<ul class="indicators">
+  <li>Change in tempo of Russian strikes on Ukrainian infrastructure, or Ukrainian strikes on Russian refineries.</li>
+  <li>New formal Russia&ndash;Ukraine&ndash;US talks announced within 2&ndash;4 weeks (supports H2).</li>
+  <li>Any disclosure of the contents of Putin's decrees 605&ndash;607.</li>
+  <li>Any official statement naming Zimmerman in connection with this visit (currently zero).</li>
+  <li>Primary-source verification of the iStories claim linking a Putin decree to a possible Zimmerman pardon.</li>
+  <li>Rescheduled date for the postponed Witkoff/Kushner Kyiv visit — still not found.</li>
+  <li>Putin's own public statement — so far absent.</li>
+  <li>Further unannounced high-level Moscow&ndash;Washington visits (indicates an ongoing back-channel vs. one-off).</li>
+</ul>
+
+<h2><span class="num">07</span>Prismatic OSINT/DD Deep Survey</h2>
+<p>An ultracode Workflow ran a 5-way parallel sweep across Prismatic's 33 OSINT/DD apps and 136 source adapters, followed by consolidation and viability checks. 92 of 136 adapters are genuinely global (not Czech-bound), but almost none added new capability beyond the GDELT/sanctions stack already in use. Two candidates were pursued:</p>
+<div class="kj-item">
+  <span class="id">Wayback Machine</span> <span class="pill high">Runnable, no key</span>
+  <p>Queried live via direct CDX API calls: Kremlin.ru (1 snapshot in-window, no revisions), CIA.gov director page (1 snapshot, same day), CIA.gov press-releases (zero results), this report's BBC source article (1 capture, 1 digest — no silent edits). <em>Negative result, logged as a finding</em>: no evidence of altered/taken-down official pages.</p>
+</div>
+<div class="kj-item">
+  <span class="id">NewsAPI / IntelligenceX / Court Records</span> <span class="pill low">Ruled out</span>
+  <p>NewsAPI and IntelligenceX both blocked on missing (and, for IntelligenceX, paid) API keys not present in this environment. Court Records' docstring claims multi-jurisdiction coverage but the code implements only Czech InfoSoud — structurally incapable of surfacing anything about the Zimmerman detainee thread, regardless of credentials.</p>
+</div>
+<div class="kj-item">
+  <span class="id">Wayback, take two</span> <span class="pill high">Stronger negative result</span>
+  <p>Found the real URL structures and re-queried: <code>cia.gov/stories/press-releases-and-statements/</code> had 5 same-day snapshots with an identical content digest (no change); two <code>kremlin.ru/events/administration/{id}</code> pages from the visit window were confirmed unrelated to the visit. "Right path, archived repeatedly, demonstrably unchanged" — stronger than the first guessed-path pass.</p>
+</div>
+
+<h2><span class="num">08</span>Scope Note</h2>
+<div class="decline-box">
+This investigation used only public web search, article reads, a live public GDELT API query, and direct Wayback Machine CDX queries. A request — repeated three times across the session — to extend into Google-dorking / gray-technique reconnaissance (admin-panel, config-file, and credential discovery) against CIA.gov, Kremlin.ru, or related government infrastructure was declined each time. Unauthorized reconnaissance of sovereign government systems is out of scope for any legitimate OSINT/DD use case and cannot be authorized by chat instruction alone, regardless of repetition.
+</div>
+
+<h2><span class="num">08b</span>Hourly Re-sweep (22:30 CEST)</h2>
+<p><strong>Zimmerman / "iStories" lead — attribution corrected.</strong> Meduza's own 25 Aug article owns the decree-gap observation (605–607 missing) and attributes the Zimmerman-pardon link to Ksenia Sobchak, "no source". The "iStories" attribution came via a secondary chain that also mis-counts the decrees (two vs three). Status: attribution unreliable; KJ4 stays Low.</p>
+<p><strong>Naryshkin.</strong> The Spectator asserts, unsourced, that Ratcliffe met SVR chief Sergei Naryshkin; the Kremlin has not identified anyone. Plausible-but-unconfirmed.</p>
+<p><strong>Iran angle.</strong> Commentator convergence (Spectator; Newsweek) — opinion, not evidence. KJ3 unchanged.</p>
+<p><strong>Still open:</strong> Putin statement; Witkoff/Kushner reschedule; talks announcement; official Zimmerman mention.</p>
+
+<h2><span class="num">09</span>Caveats</h2>
+<p class="caveat">Open-source only; no classified access. Several judgments rest on single-sourced or unsourced claims (notably the Zimmerman detainee lead and the WSJ mobilization report) and are not independently corroborated by this investigation. Neither government has confirmed the substance of the talks. This report reflects the state of open-source reporting as of 2026-08-26 and will change as new information emerges.</p>
+
+</body>
+</html>

@@ -1,0 +1,525 @@
+{
+  "report_id": "ratcliffe-moscow-2026",
+  "title": "CIA Director John Ratcliffe's unannounced visit to Moscow",
+  "created": "2026-08-26",
+  "last_updated": "2026-08-26T20:30:00Z",
+  "status": "in-progress",
+  "classification": "OSINT / open-source only",
+  "entities": {
+    "persons": [
+      {
+        "id": "person:john-ratcliffe",
+        "name": "John Ratcliffe",
+        "role": "Director, Central Intelligence Agency (CIA)",
+        "notes": "First known trip to Moscow as CIA director under Trump's second term."
+      },
+      {
+        "id": "person:dmitry-peskov",
+        "name": "Dmitry Peskov",
+        "role": "Kremlin Press Secretary",
+        "notes": "Confirmed the visit, denied a Putin meeting, called intelligence contacts 'a positive phenomenon'."
+      },
+      {
+        "id": "person:vladimir-putin",
+        "name": "Vladimir Putin",
+        "role": "President of Russia",
+        "notes": "Not met by Ratcliffe per Kremlin; reportedly briefed immediately on the talks."
+      },
+      {
+        "id": "person:donald-trump",
+        "name": "Donald Trump",
+        "role": "President of the United States",
+        "notes": "Called the visit 'semi-routine'; said 'something may come out of' it."
+      },
+      {
+        "id": "person:william-burns",
+        "name": "William Burns",
+        "role": "Former CIA Director (2021-2025)",
+        "notes": "Historical precedent: last CIA director to visit Moscow, Nov 2021, warned Russia against invading Ukraine weeks before the full-scale invasion."
+      },
+      {
+        "id": "person:ksenia-karelina",
+        "name": "Ksenia Karelina",
+        "role": "US-Russian dual national, released prisoner",
+        "notes": "Prior case where Ratcliffe reportedly played a role in negotiations for release."
+      },
+      {
+        "id": "person:sergei-naryshkin",
+        "name": "Sergei Naryshkin",
+        "role": "Director, Foreign Intelligence Service (SVR)",
+        "notes": "Probable counterpart. Spectator asserts (unsourced) Ratcliffe 'certainly spoke to' him; Kremlin has not identified officials. Established direct Ratcliffe-Naryshkin line (March 2025 call on reducing confrontation)."
+      }
+    ],
+    "organizations": [
+      {
+        "id": "org:cia",
+        "name": "CIA (Central Intelligence Agency)",
+        "country": "US"
+      },
+      {
+        "id": "org:kremlin",
+        "name": "Kremlin / Russian Presidential Administration",
+        "country": "RU"
+      },
+      {
+        "id": "org:svr-fsb",
+        "name": "Russian intelligence services (SVR/FSB, unspecified)",
+        "country": "RU"
+      }
+    ]
+  },
+  "background_dossiers": {
+    "person:john-ratcliffe": {
+      "career": [
+        "US Attorney, Eastern District of Texas (2007)",
+        "Mayor of Heath, TX (2004-2012)",
+        "US Representative, TX-4 — House Intelligence/Homeland Security/Judiciary committees",
+        "Director of National Intelligence (2020, Trump admin)",
+        "CIA Director (nominated Nov 2024)"
+      ],
+      "controversies": [
+        "2020: terminated in-person congressional election-security briefings, criticized as politically motivated.",
+        "2020: declassified unverified Russian-sourced disinformation alleging a Clinton scheme linking Trump to Russian hacking, 35 days pre-election; acknowledged uncertainty about accuracy.",
+        "Recurring congressional concern over impartiality as a Trump political appointee."
+      ],
+      "relevance": "Same official who as DNI in 2020 handled Russia-linked material in a way critics called politically convenient for Trump — relevant context for weighing the administration's 'semi-routine' framing of this trip.",
+      "sanctions_status": "none found"
+    },
+    "person:dmitry-peskov": {
+      "career": [
+        "USSR/Russian Foreign Ministry (from 1989)",
+        "Russian Embassy, Ankara (1990-1994)",
+        "Putin deputy press secretary (2000)",
+        "Presidential Press Secretary / Deputy Chief of Presidential Executive Office (2008-present)"
+      ],
+      "controversies": [],
+      "relevance": "Diplomatic/communications track, not intelligence-operational — reinforces KJ1 that Peskov is the public conduit, not a principal in the SVR/FSB-level talks.",
+      "sanctions_status": "Pre-existing US SDN designation (disinformation-campaign role); family separately sanctioned over lifestyle incongruent with civil-servant salary (source: OCCRP Russian Asset Tracker). Designation predates and is unrelated to this visit."
+    }
+  },
+  "sanctions_screening": {
+    "method": "Manual OSINT pass emulating Prismatic sanctions adapters (ofac_sdn, eu_sanctions, un_sanctions, opensanctions) — not a live tool execution.",
+    "as_of": "2026-08-26",
+    "findings": [
+      "OFAC SDN list last updated 2026-08-24, one day pre-visit — no new Russia-intelligence-linked designation found timed to the visit.",
+      "No FSB/SVR official identified in available reporting as newly sanctioned in connection with this trip.",
+      "Peskov confirmed as pre-existing SDN entry, unrelated to this visit."
+    ],
+    "result": "negative (no sanctions action tied to the visit found) — logged as a result, re-check if diplomatic track moves"
+  },
+  "media_monitoring": {
+    "method": "Conceptual GDELT applicability pass (global-gdelt adapter identified as right tool class; live GDELT GKG/BigQuery query not performed in this session — outside standard web search).",
+    "findings": [
+      "Coverage confirmed broad and international beyond the core US/UK outlet set already logged (e.g. Tribune India, Mediaite, Roic News) — indicates high global salience.",
+      "Consistent 'rare / unannounced / first since 2021' framing across outlets."
+    ],
+    "follow_up": "Live GDELT GKG pull on 'Ratcliffe' + 'Moscow', date range 2026-08-25/26, for actual tone/actor-network scoring — recommended next concrete action."
+  },
+  "timeline": [
+    {
+      "date": "2021-11",
+      "event": "William Burns (CIA director) visits Moscow, warns against invasion of Ukraine.",
+      "source": "BBC"
+    },
+    {
+      "date": "2022-02",
+      "event": "Russia launches full-scale invasion of Ukraine, weeks after Burns visit.",
+      "source": "BBC"
+    },
+    {
+      "date": "2026 (Alaska summit, undated in sources)",
+      "event": "Trump-Putin summit in Alaska; no breakthrough on Ukraine war.",
+      "source": "BBC"
+    },
+    {
+      "date": "2026-08-25",
+      "event": "Ratcliffe flies unannounced Joint Base Andrews -> Moscow via Latvia, ~8.5 hours on the ground.",
+      "source": "CBS/CNN/WaPo"
+    },
+    {
+      "date": "2026-08-25 (pre-visit)",
+      "event": "US asks Ukraine to suspend strikes on Russia until the delegation clears Russian airspace.",
+      "source": "CBS/Axios via BBC"
+    },
+    {
+      "date": "2026-08-26",
+      "event": "Peskov confirms visit at daily briefing; denies Putin meeting; calls it 'contacts with intelligence services'.",
+      "source": "BBC/CBS"
+    },
+    {
+      "date": "2026-08-26",
+      "event": "Trump comments publicly: 'semi-routine', 'something may come out of it'.",
+      "source": "BBC"
+    },
+    {
+      "date": "2026-08-25",
+      "event": "Putin signs 3 undisclosed decrees (Nos. 605-607), contents unpublished; 3 public decrees (608-610, ambassador reassignment + commission reshuffle) signed same day for contrast.",
+      "source": "Kyiv Post/NV.ua/UNN/Charter97"
+    },
+    {
+      "date": "2026-08-25 (night into 08-26)",
+      "event": "Ukrainian drone strikes on Moscow resume hours after Ratcliffe's departure; ~10 drones intercepted near Moscow (of 426 claimed shot down nationwide); 3 of 4 Moscow airports briefly restricted.",
+      "source": "ABC News/Yahoo/Daily Beast/KXLY"
+    },
+    {
+      "date": "2026-08-26 (unconfirmed)",
+      "event": "Kremlin pool correspondent Alexander Yunashev reportedly claims Ratcliffe DID meet Putin, who cancelled a public event to do so -- contradicts Peskov's official denial.",
+      "source": "reported via multiple outlets, single named source, not independently corroborated"
+    },
+    {
+      "date": "2026-08-27 (reported)",
+      "event": "Russian state media reports a prospective 'quite big' POW exchange in preparation -- no confirmed link to the Ratcliffe visit.",
+      "source": "Kyiv Post"
+    }
+  ],
+  "key_judgments": [
+    {
+      "id": "KJ1",
+      "confidence": "High (dipped to Medium mid-investigation, restored after verification)",
+      "statement": "Intelligence-to-intelligence channel (CIA <-> SVR/FSB), not a head-of-state meeting.",
+      "support": "Peskov's denial was unambiguous and repeated independently (TASS, WaPo). The 'Putin met Ratcliffe' framing traced back to a narrower Yunashev claim (Putin cancelled a large public event) inflated by secondary-source paraphrase."
+    },
+    {
+      "id": "KJ2",
+      "confidence": "Medium",
+      "statement": "Primary topic likely Ukraine war de-escalation / reviving stalled peace process.",
+      "support": "Kyiv pre-notified and asked to halt strikes; Trump referenced wanting the war to end; confirmed visit-scoped strike pause then resumption."
+    },
+    {
+      "id": "KJ3",
+      "confidence": "Low-Medium",
+      "statement": "Iran / sanctions may have been a secondary topic.",
+      "support": "Analyst speculation only (Glen Howard, anonymous accounts), no official confirmation."
+    },
+    {
+      "id": "KJ4",
+      "confidence": "Low (detainee identity confirmed, causal link unconfirmed)",
+      "statement": "Possible humanitarian/detainee-release channel.",
+      "support": "Charles Zimmerman independently confirmed as a real imprisoned American (US Navy veteran, 5-year Sochi sentence). The 'iStories pardon' lead was traced (SS8.9.1) to a secondary-source attribution error layered on Meduza's decree-gap observation and Sobchak's unsourced speculation. Gilman precedent (decree-based pardon, 12 Aug) is real but unrelated to this visit. Meduza: five Americans still held."
+    },
+    {
+      "id": "KJ5",
+      "confidence": "Medium-High",
+      "statement": "Choice of intelligence (not diplomatic) channel signals deniability / lower political cost amid stalled formal talks.",
+      "support": "Pattern consistent with 2021 Burns precedent as crisis back-channel."
+    }
+  ],
+  "alternative_hypotheses": [
+    {
+      "id": "H1",
+      "label": "Crisis de-escalation / warning",
+      "description": "US warning based on intelligence of a new Russian mobilization wave and possible provocation against NATO (WSJ-sourced, confirmed specific via verification pass).",
+      "likelihood": "plausible, best-evidenced single hypothesis after verification"
+    },
+    {
+      "id": "H2",
+      "label": "Revive stalled peace talks",
+      "description": "Post-Alaska summit stagnation; CIA as informal channel outside exhausted diplomatic track; reinforced by confirmed visit-scoped strike pause.",
+      "likelihood": "plausible, most consistent with evidence"
+    },
+    {
+      "id": "H3",
+      "label": "Transactional humanitarian diplomacy",
+      "description": "Detainee/prisoner exchange as confidence-building gesture. Charles Zimmerman confirmed real/imprisoned (Navy veteran, 5-year Sochi sentence) but the Gilman 'precedent' invoked actually predates this visit by ~2 weeks via a separate direct Trump-Putin channel -- weakens causal link to this specific trip while confirming the general detainee-leverage pattern is real.",
+      "likelihood": "possible but weaker after verification"
+    },
+    {
+      "id": "H4",
+      "label": "Routine intelligence coordination",
+      "description": "Trump's own framing; least likely given visibility/seniority mismatch. Revised twice: not envoy substitution, and not a fresh parallel channel either -- Witkoff/Kushner run an ESTABLISHED Moscow channel (Putin meetings Dec 2025/Jan 2026) that was simply postponed due to the Kyiv security situation at this moment, making Ratcliffe's trip a plausible gap-filler for time-sensitive messaging.",
+      "likelihood": "low, likely rhetorical minimization"
+    }
+  ],
+  "indicators_to_watch": [
+    "Change in tempo of Russian strikes on Ukrainian infrastructure or Ukrainian strikes on Russian refineries (1-2 week window).",
+    "Announcement of new formal Russia-Ukraine-US talks within 2-4 weeks (would support H2).",
+    "Reports of American detainee releases (would support H3).",
+    "New US sanctions on Russia-Iran trade entities (would support H3/Iran angle).",
+    "Further unannounced high-level visits Moscow<->Washington (would indicate an ongoing back-channel vs. one-off).",
+    "Putin's own public statement (silent so far) — would signal political weight assigned to the meeting.",
+    "[New, top priority] Independent Western corroboration or denial of the Yunashev claim that Putin personally met Ratcliffe.",
+    "Any disclosure of the contents of Putin's decrees 605-607.",
+    "Confirmation or denial that the reported prospective POW exchange is linked to this visit.",
+    "Any US or Russian official statement naming Zimmerman specifically in connection with the Ratcliffe visit (currently zero official mentions -- traced only to an unsourced Ksenia Sobchak Telegram post).",
+    "Rescheduled date for the Witkoff/Kushner Kyiv visit (postponed, not cancelled; still not found as of the SS8.8.3 follow-up) and any follow-on Moscow leg -- clarifies whether it resumes independently of, or in coordination with, whatever Ratcliffe's visit initiated.",
+    "Primary-source verification of the iStories claim (SS8.8.2) that one of Putin's undisclosed decrees may have pardoned Zimmerman -- currently unconfirmed by this investigation; would be the strongest possible upgrade to KJ4/H3 if verified."
+  ],
+  "gdelt_sweep": {
+    "method": "Live query against GDELT DOC 2.0 API (api.gdeltproject.org/api/v2/doc/doc), no key required. Query 'Ratcliffe Moscow', window 2026-08-25/26.",
+    "sample_size": 75,
+    "source_countries": {
+      "United States": 41,
+      "India": 10,
+      "Israel": 5,
+      "United Kingdom": 4,
+      "Pakistan": 2,
+      "Ukraine": 2,
+      "Germany": 2,
+      "Russia": 2,
+      "Finland": 1,
+      "Lithuania": 1,
+      "Bangladesh": 1,
+      "Sweden": 1,
+      "Italy": 1,
+      "Singapore": 1,
+      "Canada": 1
+    },
+    "tone_distribution_summary": "Heavily negative skew; densest bin (63/75 articles) at tone ~ -4; long negative tail to -8 (hybrid-war/nuclear-use/NATO-test framing headlines).",
+    "new_findings": [
+      {
+        "finding": "Putin signed 3 undisclosed decrees (605-607) on 2026-08-25, contents unpublished.",
+        "confidence": "Medium-High",
+        "support": "Multi-outlet: Kyiv Post, NV.ua, UNN, Charter97."
+      },
+      {
+        "finding": "Kremlin pool correspondent Yunashev reportedly claims Ratcliffe DID meet Putin, contradicting Peskov's official denial.",
+        "confidence": "Low-Medium",
+        "support": "Single named source, not corroborated by Western outlets in this sweep. Directly undercuts KJ1."
+      },
+      {
+        "finding": "Ukrainian drone strikes on Moscow resumed within hours of Ratcliffe's departure; ~10 drones intercepted, 3/4 Moscow airports briefly restricted.",
+        "confidence": "High",
+        "support": "ABC News, corroborated by Yahoo/Daily Beast/KXLY, consistent with Sobyanin's own Telegram post."
+      },
+      {
+        "finding": "Oreshnik/Poseidon 'NATO warning' framing.",
+        "confidence": "Low",
+        "support": "Low-tier secondary source (bankingnews.gr); Trump explicitly denied a NATO-warning purpose. Folded into H1, not a standalone KJ."
+      },
+      {
+        "finding": "Independent report of a prospective 'quite big' POW exchange one day after the visit.",
+        "confidence": "Low",
+        "support": "Temporal proximity only, no confirmed causal link stated by any source. Modestly strengthens H3."
+      }
+    ]
+  },
+  "sources": [
+    {
+      "outlet": "BBC",
+      "url": "https://www.bbc.com/news/articles/c0klj7ykp81o",
+      "title": "Trump says 'something may come out of' CIA head's unannounced visit to Moscow"
+    },
+    {
+      "outlet": "CBS News",
+      "url": "https://www.cbsnews.com/news/cia-director-john-ratcliffe-russia-secret-trip/",
+      "title": "CIA Director John Ratcliffe met Russian intel counterparts on secretive visit to Moscow, Kremlin says"
+    },
+    {
+      "outlet": "CNN",
+      "url": "https://www.cnn.com/2026/08/25/politics/cia-director-visits-moscow",
+      "title": "CIA director makes unannounced visit to Moscow to meet with Russian officials, source says"
+    },
+    {
+      "outlet": "Newsweek",
+      "url": "https://www.newsweek.com/john-ratcliffe-cia-moscow-russia-trip-putin-12368735",
+      "title": "John Ratcliffe's Mystery Moscow Trip Is a Choose-Your-Own-Adventure Story"
+    },
+    {
+      "outlet": "Washington Post",
+      "url": "https://www.washingtonpost.com/national-security/2026/08/25/cia-director-moscow-rare-unannounced-trip/",
+      "title": "CIA director makes rare, unannounced visit to Moscow"
+    },
+    {
+      "outlet": "UPI",
+      "url": "https://www.upi.com/Top_News/US/2026/08/26/CIA-director-Moscow-talks/3801787745328/",
+      "title": "CIA chief John Ratcliffe in secret mission to Moscow amid 'crisis' ties"
+    },
+    {
+      "outlet": "RFE/RL",
+      "url": "https://www.rferl.org/a/russia-us-cia-unannounced-rare-visit/33839330.html",
+      "title": "CIA Director Ratcliffe's Surprise Moscow Trip Raises Questions Over Russia, Ukraine, Iran",
+      "note": "fetch blocked HTTP 403, content only via search snippet"
+    }
+  ],
+  "verification_pass": {
+    "method": "4 targeted WebSearches to verify GDELT-surfaced standout claims, plus 2 WebFetch reads of Meduza explainer and a ThreadReaderApp compilation of Russian military-blogger reactions (@ChrisO_wiki).",
+    "findings": [
+      "Yunashev claim clarified: his actual sourced statement is that Putin cancelled a large scheduled event, not a direct claim that a Putin-Ratcliffe meeting occurred. Secondary outlets inflated this into 'Putin met Ratcliffe.' Peskov's denial ('no meetings of any kind with the Russian president') was independently repeated to TASS and directly to the Washington Post.",
+      "H1 (mobilization warning) confirmed specific: WSJ reporting states Ratcliffe may have delivered a warning based on US intelligence of a new mobilization wave and possible NATO provocation.",
+      "Decrees 605-607 confirmed still undisclosed — no leak found; existence inferable only from the numbering gap vs. published decrees 608-610.",
+      "POW exchange context: the reported 'quite big' exchange (Russian Human Rights Commissioner Yana Lantratova via TASS) is the next installment in an already-running series (103-for-103 on 19 Aug, another expected before month-end) -- a routine process, not visit-triggered.",
+      "Broader disruption context (Meduza): this was the first visit by any senior US administration official to Russia since January 2026, not just the first CIA-director visit since 2021.",
+      "Named-detainee lead (Meduza): Russian Telegram speculation links the visit to the possible release of Charles Zimmerman (named American detainee), analogous to the recent release of Robert Gilman. Single-channel, unconfirmed by Western outlets.",
+      "Envoy substitution signal (Russian mil-bloggers via @ChrisO_wiki): Ratcliffe came instead of Trump's usual Russia interlocutors Steve Witkoff and Jared Kushner -- read domestically as signaling gravity, reinforcing KJ5.",
+      "Russian mil-blogger interpretations are themselves divergent (escalation warning / US abandoning Ukraine / direct warning) -- no internal consensus, so not treated as a unified signal."
+    ],
+    "declined_scope": "Explicitly declined a mid-session request to extend into Google-dorking / gray-technique reconnaissance (admin-panel, config-file, credential discovery) against CIA.gov, Kremlin.ru, or related government infrastructure, even after in-chat authorization. Reasoning: unauthorized reconnaissance of sovereign government systems is out of scope for any legitimate OSINT/DD use case and cannot be authorized by chat instruction alone. Continued instead with public-source web research only."
+  },
+  "third_deepening_pass": {
+    "method": "5 further WebSearches: Zimmerman identity, Gilman release circumstances, Witkoff/Kushner recent activity, post-visit developments, Putin's own reaction.",
+    "findings": [
+      "Charles Zimmerman identified: US Navy veteran, intercepted by Russian Navy in international waters near the Black Sea, forced to Sochi, sentenced to 5 years for an undeclared firearm aboard his yacht. Independently corroborated (Fox News, National Interest, CBS News, Cardinal News). Family/US officials frame as bargaining-chip detention, consistent with a documented pattern since 2022. Real person, high confidence; causal link to THIS visit still low confidence (single Telegram channel).",
+      "Robert Gilman release re-dated: released 12 August 2026, ~2 weeks BEFORE the Ratcliffe visit (25 Aug), via a separate direct Trump-Putin channel and a Putin humanitarian pardon -- NOT connected to the Ratcliffe trip. Weakens the Telegram-sourced Zimmerman/Gilman analogy as evidence for a live process running through this visit.",
+      "Witkoff/Kushner found actively engaged on a PARALLEL channel: expected in Kyiv around 24 Aug (Ukraine Independence Day) for their first visit as principal US intermediaries, with a Moscow follow-on already under discussion (TASS, from 9 Aug reporting), Zelensky citing 'daily contact' as of 4 Aug. Revises earlier 'envoy substitution' framing (SS8.4) to 'parallel independent channel' -- Ratcliffe did not replace the diplomatic track, he ran alongside it.",
+      "Trump's denials logged more specifically: explicitly denied the visit was meant to raise concerns about Russian designs on NATO territory, AND explicitly denied it was meant to seek Russian help reopening the Strait of Hormuz (i.e. not an Iran-sanctions-for-Hormuz trade). Logged as claims from an interested party, not independently verified findings.",
+      "No material change: Putin remains publicly silent on the visit (unchanged indicator). No confirmed link found between the Ratcliffe visit and the Witkoff/Kushner Moscow leg."
+    ],
+    "declined_scope_repeat": "Second explicit decline of the Google-dorking/gray-techniques request against CIA.gov/Kremlin.ru, repeated verbatim by the user. Same reasoning as first decline applies; not something repetition changes."
+  },
+  "indicator_followup": {
+    "method": "3 further WebSearches tracking the two open indicators from SS6/SS8.5 (Zimmerman link, Witkoff/Kushner channel status).",
+    "findings": [
+      "Zimmerman: speculation traced to Ksenia Sobchak (Russian journalist/media personality) Telegram post, no source cited. More specific attribution, not stronger evidence. Neither government has confirmed a link. Indicator unchanged/negative as of this pass.",
+      "Witkoff/Kushner Kyiv visit was POSTPONED (not cancelled) due to intensified Russian strikes on Kyiv around 23-24 Aug -- same window as the Ratcliffe trip. 6 European leaders + UK PM Andy Burnham arrived in Kyiv regardless on 23-24 Aug.",
+      "Witkoff/Kushner run an ESTABLISHED Moscow channel: 5-hour Putin meeting Dec 2025, further Putin meeting reported Jan 2026, discussing US security guarantees for Ukraine. Not a fresh parallel track.",
+      "Revised reading: this is a single established diplomatic channel that was temporarily stalled (Kyiv security situation) at the exact moment Ratcliffe flew direct to Moscow -- reinforces H1/H2 over H4 (intelligence channel plausibly filled a gap while the usual channel was logistically stuck), revising SS8.5's 'parallel independent channel' framing."
+    ],
+    "declined_scope_third": "Third explicit decline of the Google-dorking/gray-techniques request, repeated verbatim by the user a third time. Addressed directly as a standing position rather than re-explained from scratch."
+  },
+  "prismatic_deep_survey": {
+    "method": "Ultracode Workflow: 5 parallel finder agents (apps catalog, adapter enumeration, agent registry, mix tasks, skills/commands) + 1 consolidation/verification agent, across Prismatic's 33 OSINT/DD/intelligence apps and 136 source adapters. Superseded the earlier single-agent survey.",
+    "adapter_counts": {
+      "total": 136,
+      "globally_applicable": 92,
+      "cz_specific": 41,
+      "eu_specific": 2,
+      "uk_specific": 1,
+      "us_specific": 1
+    },
+    "new_candidates": [
+      {
+        "adapter": "wayback_machine.ex",
+        "source": "Internet Archive Wayback Machine",
+        "requires_auth": false,
+        "runnable_now": true,
+        "note": "No API key needed; only reachable via LiveView UI or iex shell, no standalone mix CLI. Actually queried live via direct CDX API calls (bypassing app boot) against Kremlin.ru, CIA.gov, and the BBC source article."
+      },
+      {
+        "adapter": "newsapi.ex",
+        "source": "NewsAPI.org",
+        "requires_auth": true,
+        "runnable_now": false,
+        "note": "Blocked on missing NEWSAPI_API_KEY, not present in any tracked env file in this dev environment. Would require third-party signup -- not pursued, out of session scope."
+      }
+    ],
+    "ruled_out": [
+      "All 41 czech/ adapters and CZ-bound apps (prismatic_czech_autocrawler, prismatic_czech_courts, prismatic_cer, prismatic_property_intelligence, prismatic_power_graph) -- confirmed inapplicable, consistent with the initial survey.",
+      "All 546 .claude/agents/* 'OSINT specialist' personas -- confirmed by the sweep to be prose-only stubs with generic Read/Write/Edit/Bash/Grep/Glob tools, no wired API/credential/mix-task binding.",
+      "The 'special forces' skills (falcon-strike, siege-master, green-beret, navy-seal, delta-force, ghost-recon, operation-order) -- all route to the same generic command agent, no real data layer.",
+      "Commercial person-enrichment adapters (pipl.ex, fullcontact.ex, clearbit.ex, zoominfo.ex) -- low yield for already-public figures (Ratcliffe/Peskov/Witkoff/Kushner)."
+    ],
+    "worth_trying_not_pursued": [
+      "duckduckgo.ex / social_searcher.ex (secondary search cross-check)"
+    ],
+    "worth_trying_checked_and_ruled_out": [
+      {
+        "adapter": "court_records.ex",
+        "reason": "Architectural, not auth-related. Docstring claims multi-jurisdiction coverage (ISIR, NSS, Ustavni soud, ICC, ICSID, WTO, ECHR) but code implements only Czech InfoSoud functionally; EU/CURIA branch is a dead stub returning []; any non-CZ/EU jurisdiction (incl. US/Russia) falls through to a generic handler also returning {:ok, []}. No path to US federal/state courts, PACER, or Russian judicial records exists. Structurally incapable of surfacing anything about Zimmerman regardless of API key status (none required)."
+      },
+      {
+        "adapter": "intelligencex.ex",
+        "reason": "Same operational block as newsapi.ex. Functionally complete implementation (not a stub) against the real IntelligenceX leak/darkweb API, but requires INTELLIGENCEX_API_KEY, absent from every env file in the repo; also a paid commercial service, not a simple free signup."
+      }
+    ]
+  },
+  "wayback_machine_results": {
+    "method": "Live queries against public Wayback Machine CDX API (web.archive.org/cdx/search/cdx, archive.org/wayback/available) directly, bypassing full Elixir/Phoenix app boot for a single public unauthenticated endpoint.",
+    "queries": [
+      {
+        "target": "kremlin.ru",
+        "window": "2026-08-24 to 2026-08-27",
+        "result": "Exactly 1 snapshot found (2026-08-24 14:00 UTC) -- no evidence of multiple revisions."
+      },
+      {
+        "target": "kremlin.ru/press/* (briefing transcripts)",
+        "window": "2026-08-25 to 2026-08-27",
+        "result": "Zero results -- path not archived or different URL scheme than assumed."
+      },
+      {
+        "target": "cia.gov/about/director-of-cia",
+        "date": "2026-08-25",
+        "result": "1 snapshot found (2026-08-25 12:59 UTC), same day as the visit -- no evidence of alteration."
+      },
+      {
+        "target": "cia.gov/press-releases*",
+        "window": "2026-08-20 to 2026-08-27",
+        "result": "Zero results -- path not archived or different URL structure."
+      },
+      {
+        "target": "bbc.com/news/articles/c0klj7ykp81o (this report's source article)",
+        "result": "Exactly 1 capture, 1 content digest -- no evidence of silent post-publication edits."
+      }
+    ],
+    "assessment": "Negative result, logged as a finding not a gap (consistent with the SS7.3 sanctions-screening negative result). No evidence found of silent edits/takedowns of official pages around the visit. Does not rule such edits out -- Wayback's path-level coverage is incomplete (zero-result press-page queries show this) -- but nothing here supports a narrative-manipulation angle. Follow-up would need the correct Kremlin/CIA press-release URL structure specifically, a low-value next step given the negative signal so far."
+  },
+  "wayback_followup_correct_urls": {
+    "method": "Per explicit user follow-up request: found the ACTUAL URL structures (via CDX prefix search) instead of guessing, then re-queried.",
+    "queries": [
+      {
+        "target": "cia.gov/stories/press-releases-and-statements/",
+        "result": "5 snapshots on 25 Aug (01:12-13:08 UTC), ALL sharing the identical content digest -- page did not change all day, including after Ratcliffe's afternoon departure. No snapshot after 25 Aug in Wayback's index. Headlines visible are unrelated to the visit (Durham Appendix declassification, Josh Simmons General Counsel confirmation, William Webster obituary statement)."
+      },
+      {
+        "target": "kremlin.ru/events/administration/80513 and /80544",
+        "result": "Both fetched directly and confirmed UNRELATED to the visit -- a desertification-policy forum (Ruslan Edelgeriev) and a child-reunification program update (Maria Lvova-Belova). Sequential admin-event IDs are not topically adjacent; this was a dead end, not a suppressed record."
+      }
+    ],
+    "assessment": "Much stronger negative result than the first pass (SS8.7) -- this isn't 'wrong path, no data,' it's 'right path, archived repeatedly, demonstrably unchanged.' Confirms no contemporaneous CIA statement on the visit and rules out the two specific Kremlin admin IDs checked. Does not prove no official statement exists anywhere -- Wayback's crawl is not exhaustive -- but meaningfully stronger than before."
+  },
+  "zimmerman_istories_claim": {
+    "claim": "Independent Russian investigative outlet iStories reportedly stated one of Putin's undisclosed decrees signed 25 August may have been a pardon for Zimmerman.",
+    "verification_status": "ATTRIBUTION UNRELIABLE (SS8.9.1) -- Meduza's own 25 Aug item owns the decree-gap observation (605-607 missing) and attributes the Zimmerman link to Ksenia Sobchak, explicitly 'no source'. The 'iStories' attribution came via a Spanish-language secondary chain that also mis-counts the decrees (2 vs 3). site:istories.media search: nothing on Zimmerman. Most likely a secondary-source attribution error, not an independent investigative finding.",
+    "why_it_matters_if_true": "Would be materially stronger than the Sobchak Telegram speculation (a named investigative outlet with a specific mechanism, not an unsourced social post) -- but treated as an open lead, not a confirmed fact, pending primary-source access.",
+    "supporting_context": "Robert Gilman's 12 August release (predates this visit, already logged as unrelated) was itself decree/pardon-based (Reuters/Moscow Times, 2026-08-11) -- establishes that 'secret-decree-as-pardon-mechanism for detained Americans' is a real, precedented pattern at this Kremlin, which is why the iStories claim is plausible on its face even though unconfirmed here."
+  },
+  "prismatic_tool_note": "Platform's OSINT/DD layer (person-investigate, dd-run, dd-generate, dd-investigate, osint-hub) is ~95% hard-wired to Czech registries (ARES, Justice.cz, ISIR, CUZK) — inapplicable to this US-Russia case. Globally-applicable tools identified: GDELT adapter (global-gdelt), sanctions adapters (ofac_sdn, eu_sanctions, un_sanctions, opensanctions). google-hacking skill's credential/admin-panel dorking arsenal deliberately not run (out of scope for public-figure background research). intel_export skill confirmed inapplicable (exports whole platform knowledge base, not a per-case report template).",
+  "changelog": [
+    {
+      "date": "2026-08-26T00:00:00Z",
+      "change": "Initial report created from BBC article + WebSearch/WebFetch OSINT sweep (5 sources)."
+    },
+    {
+      "date": "2026-08-26T01:00:00Z",
+      "change": "Added background dossiers (Ratcliffe, Peskov), sanctions screening pass, GDELT media-monitoring applicability note. Documented Prismatic tool scope limitations."
+    },
+    {
+      "date": "2026-08-26T02:00:00Z",
+      "change": "Live GDELT DOC 2.0 API pull (75 articles/15 countries/tone chart) + 4 verification WebSearches. New timeline events (Putin decrees, drone resumption, contested Putin-meeting claim, POW exchange report). KJ1 confidence downgraded High -> Medium pending resolution of Yunashev-vs-Peskov contradiction."
+    },
+    {
+      "date": "2026-08-26T03:00:00Z",
+      "change": "Verification pass on GDELT standout claims (4 searches) + Meduza/mil-blogger deepening (2 fetches). KJ1 restored High (Yunashev claim was narrower than secondary sources implied). H1 reinforced with specific WSJ content. H3 downgraded (POW exchange is routine series, not visit-triggered). New named-detainee lead (Charles Zimmerman) and envoy-substitution signal (Witkoff/Kushner) added. Explicitly declined mid-session request to extend into Google-dorking/credential-and-admin-panel reconnaissance against government infrastructure -- logged as declined_scope."
+    },
+    {
+      "date": "2026-08-26T04:00:00Z",
+      "change": "Third deepening pass (5 searches): Zimmerman identified as a real, corroborated detainee (causal link to visit still unconfirmed); Gilman release re-dated to 12 Aug (predates visit, separate channel, weakens the Telegram analogy); Witkoff/Kushner found on a parallel Kyiv->Moscow channel (revises 'envoy substitution' to 'parallel channel'); Trump's NATO/Hormuz denials logged more specifically. Second explicit decline of the Google-dorking/gray-techniques request, repeated by the user."
+    },
+    {
+      "date": "2026-08-26T05:00:00Z",
+      "change": "Indicator follow-up (3 searches): Zimmerman lead traced to unsourced Ksenia Sobchak Telegram post -- indicator unchanged/negative. Witkoff/Kushner reading revised again: Kyiv trip postponed (not cancelled) due to strikes; they run an established Moscow channel (Dec 2025/Jan 2026 Putin meetings), not a fresh parallel track -- this was the SAME channel temporarily stalled, reinforcing H1/H2 over H4. Third explicit decline of the Google-dorking/gray-techniques request, repeated a third time by the user."
+    },
+    {
+      "date": "2026-08-26T06:00:00Z",
+      "change": "Ultracode Workflow deep survey (SS8.7): 5 parallel finders + consolidation agent across 33 apps/136 adapters. Confirmed initial survey, found 2 new candidates (wayback_machine runnable, newsapi blocked on missing key). Ran live Wayback Machine CDX queries against Kremlin.ru/CIA.gov/BBC source -- negative result (no silent edits found), logged as finding."
+    },
+    {
+      "date": "2026-08-26T06:30:00Z",
+      "change": "Checked remaining worth-trying adapters: court_records.ex ruled out on architectural grounds (CZ-only despite docs claiming multi-jurisdiction, no US/RU path exists); intelligencex.ex ruled out on missing-paid-API-key grounds (same as newsapi). Prismatic OSINT/DD tool survey considered exhausted for this case."
+    },
+    {
+      "date": "2026-08-26T07:00:00Z",
+      "change": "SS8.8 user follow-up: found correct Wayback URL structures, re-queried -- much stronger negative result (CIA press page unchanged across 5 same-day snapshots; 2 Kremlin admin-event IDs confirmed unrelated). Surfaced unverified iStories claim linking a Putin decree to a possible Zimmerman pardon -- logged as an open lead, not confirmed (no primary source found). Confirmed Gilman release was itself decree/pardon-based, establishing precedent for the mechanism. Witkoff/Kushner reschedule date and Putin's own statement: still not found, indicators remain open."
+    },
+    {
+      "date": "2026-08-26T20:30:00Z",
+      "change": "SS8.9 hourly re-sweep: iStories/Zimmerman attribution corrected (Meduza + unsourced Sobchak; secondary chain mis-counts decrees) -> 'attribution unreliable', KJ4 unchanged. Naryshkin logged as probable counterpart (Spectator, unsourced). Iran-angle commentator convergence noted as opinion, KJ3 unchanged. Putin statement, Witkoff/Kushner reschedule, talks announcement: still open."
+    }
+  ],
+  "hourly_resweep_2230": {
+    "method": "5 parallel WebSearches + 4 WebFetch article reads against SS6 open indicators",
+    "findings": [
+      "Zimmerman/iStories attribution corrected to Meduza + Sobchak (unsourced); decree count discrepancy (2 vs 3) in secondary chain; KJ4 unchanged Low.",
+      "Spectator asserts unsourced that Ratcliffe met SVR chief Naryshkin; Kremlin declined to identify officials; logged plausible-unconfirmed.",
+      "Commentator convergence on Iran angle (Spectator primary theory; Newsweek six-hypothesis roundup; Sanner, Greene, Bowman, Howard) -- opinion not evidence; KJ3 unchanged.",
+      "Putin statement absent; Witkoff/Kushner Kyiv date not found (Moscow leg also delayed per TASS); no talks announcement; no official Zimmerman mention."
+    ],
+    "sources": [
+      "https://meduza.io/news/2026/08/25/cbs-news-v-moskvu-priletel-direktor-tsru-dzhon-retkliff",
+      "https://spectator.com/article/what-was-the-cia-doing-in-moscow/",
+      "https://www.newsweek.com/john-ratcliffe-cia-moscow-russia-trip-putin-12368735",
+      "https://united24media.com/world/putin-signs-3-classified-decrees-during-unexpected-moscow-visit-by-cia-chief-21958",
+      "https://www.mediaite.com/media/news/new-details-revealed-in-cia-director-john-ratcliffes-mysterious-moscow-visit-report/",
+      "https://tass.com/world/2176663"
+    ]
+  }
+}

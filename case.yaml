@@ -1,0 +1,17 @@
+id: ratcliffe-moscow-2026
+title: "CIA Director's unannounced visit to Moscow, 2026-08-25"
+type: osint-intelligence-assessment
+status: in-progress
+created: 2026-08-26
+classification: open-source-only
+languages: [en, cs]
+source_of_truth: report.md
+structured: data.json
+gdelt_query: "Ratcliffe Moscow"
+window:
+  start: "20260825000000"
+  end: "20260827000000"
+watch_urls:
+  - cia.gov/stories/press-releases-and-statements
+  - kremlin.ru/events/president/news
+  - bbc.com/news/articles/c0klj7ykp81o

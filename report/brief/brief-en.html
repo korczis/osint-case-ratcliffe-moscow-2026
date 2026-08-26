@@ -1,0 +1,842 @@
+<title>Ratcliffe's Moscow Channel</title>
+<style>
+  :root {
+    --paper: #f5f2ec;
+    --paper-raised: #fbf9f5;
+    --ink: #1c1a17;
+    --ink-soft: #4a453d;
+    --muted: #857c6d;
+    --line: #dcd5c6;
+    --line-strong: #c7bea9;
+    --accent: #a13d2e;
+    --accent-soft: #e7d9d0;
+    --high: #2f6b4f;
+    --high-bg: #e1ebe3;
+    --medium: #9c6b1f;
+    --medium-bg: #efe4cd;
+    --low: #8a5a44;
+    --low-bg: #ecdfd6;
+    --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+    --sans: "IBM Plex Sans", -apple-system, "Segoe UI", sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #171614;
+      --paper-raised: #1e1c19;
+      --ink: #ece7dd;
+      --ink-soft: #c7c0b3;
+      --muted: #8f8677;
+      --line: #35322b;
+      --line-strong: #453f35;
+      --accent: #d97a63;
+      --accent-soft: #3a2621;
+      --high: #7cba98;
+      --high-bg: #1e2c24;
+      --medium: #d9ab5c;
+      --medium-bg: #2e2718;
+      --low: #c99680;
+      --low-bg: #2e2019;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper: #171614;
+    --paper-raised: #1e1c19;
+    --ink: #ece7dd;
+    --ink-soft: #c7c0b3;
+    --muted: #8f8677;
+    --line: #35322b;
+    --line-strong: #453f35;
+    --accent: #d97a63;
+    --accent-soft: #3a2621;
+    --high: #7cba98;
+    --high-bg: #1e2c24;
+    --medium: #d9ab5c;
+    --medium-bg: #2e2718;
+    --low: #c99680;
+    --low-bg: #2e2019;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .sheet {
+    max-width: 840px;
+    margin: 0 auto;
+    padding: 3.5rem 1.75rem 6rem;
+  }
+
+  header.masthead {
+    border-bottom: 3px solid var(--ink);
+    padding-bottom: 1.25rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .kicker {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .kicker .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex: none;
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: clamp(1.9rem, 4vw, 2.6rem);
+    line-height: 1.15;
+    margin: 0 0 0.6rem;
+    text-wrap: balance;
+    letter-spacing: -0.01em;
+  }
+
+  .dek {
+    font-size: 1.02rem;
+    color: var(--ink-soft);
+    max-width: 62ch;
+    margin: 0 0 1.1rem;
+  }
+
+  .meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 1.5rem;
+    font-family: var(--mono);
+    font-size: 0.76rem;
+    color: var(--muted);
+  }
+
+  .meta-row strong {
+    color: var(--ink-soft);
+    font-weight: 600;
+  }
+
+  .status-tag {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: var(--accent-soft);
+    color: var(--accent);
+    padding: 0.15rem 0.5rem;
+    border-radius: 3px;
+  }
+
+  section {
+    margin: 2.75rem 0;
+  }
+
+  .section-head {
+    display: grid;
+    grid-template-columns: 2.6rem 1fr;
+    gap: 0.9rem;
+    align-items: baseline;
+    margin-bottom: 1.1rem;
+  }
+
+  .section-num {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    color: var(--muted);
+    padding-top: 0.2rem;
+  }
+
+  h2 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1.4rem;
+    margin: 0;
+    letter-spacing: -0.005em;
+  }
+
+  .section-body {
+    grid-column: 2 / 3;
+  }
+
+  .prose-grid {
+    display: grid;
+    grid-template-columns: 2.6rem 1fr;
+  }
+
+  .prose-grid > * {
+    grid-column: 2 / 3;
+  }
+
+  p {
+    margin: 0 0 1rem;
+    max-width: 66ch;
+  }
+
+  .lede {
+    font-size: 1.06rem;
+    color: var(--ink-soft);
+  }
+
+  .kj-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+
+  .kj-item {
+    display: grid;
+    grid-template-columns: 5.2rem 1fr;
+    gap: 1rem;
+    padding: 0.95rem 1.1rem;
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    align-items: start;
+  }
+
+  .kj-id {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--muted);
+    padding-top: 0.15rem;
+  }
+
+  .kj-text {
+    margin: 0;
+    color: var(--ink);
+  }
+
+  .pill {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.12rem 0.5rem;
+    border-radius: 999px;
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+  }
+
+  .pill.high { background: var(--high-bg); color: var(--high); }
+  .pill.medium { background: var(--medium-bg); color: var(--medium); }
+  .pill.low { background: var(--low-bg); color: var(--low); }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+  }
+
+  th, td {
+    text-align: left;
+    padding: 0.65rem 0.85rem;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+
+  thead th {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: var(--paper-raised);
+    border-bottom: 1px solid var(--line-strong);
+  }
+
+  tbody tr:last-child td { border-bottom: none; }
+
+  td.date, td.id-cell { font-family: var(--mono); font-size: 0.82rem; color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+
+  .hyp-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+
+  .hyp {
+    padding-left: 1.1rem;
+    border-left: 3px solid var(--line-strong);
+  }
+
+  .hyp.lead { border-left-color: var(--accent); }
+
+  .hyp-label {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1.02rem;
+    margin: 0 0 0.25rem;
+  }
+
+  .hyp-label .h-id {
+    font-family: var(--mono);
+    font-weight: 400;
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-right: 0.5rem;
+  }
+
+  .hyp p { margin: 0; color: var(--ink-soft); font-size: 0.95rem; }
+
+  .likelihood {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-top: 0.3rem;
+    display: block;
+  }
+
+  .verdict {
+    margin-top: 1.2rem;
+    padding: 0.9rem 1.1rem;
+    background: var(--accent-soft);
+    border-radius: 4px;
+    font-size: 0.92rem;
+  }
+
+  .verdict strong { color: var(--accent); }
+
+  .entity-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .entity-group h3 {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 0.6rem;
+    font-weight: 600;
+  }
+
+  .entity {
+    padding: 0.55rem 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.9rem;
+  }
+
+  .entity:last-child { border-bottom: none; }
+
+  .entity-name { font-weight: 600; color: var(--ink); }
+  .entity-role { color: var(--muted); font-size: 0.82rem; }
+
+  .indicator-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+
+  .indicator-list li {
+    display: flex;
+    gap: 0.7rem;
+    font-size: 0.94rem;
+    color: var(--ink-soft);
+  }
+
+  .indicator-list li::before {
+    content: "→";
+    color: var(--accent);
+    flex: none;
+    font-family: var(--mono);
+  }
+
+  .source-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    font-size: 0.88rem;
+  }
+
+  .source-row {
+    display: grid;
+    grid-template-columns: 8rem 1fr;
+    gap: 0.8rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .source-outlet {
+    font-family: var(--mono);
+    font-size: 0.74rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .source-row a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line-strong); }
+  .source-row a:hover { color: var(--accent); border-color: var(--accent); }
+
+  .caveat {
+    font-size: 0.88rem;
+    color: var(--muted);
+    border-top: 1px solid var(--line);
+    padding-top: 1.2rem;
+    max-width: 66ch;
+  }
+
+  footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 3px solid var(--ink);
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  @media (max-width: 640px) {
+    .section-head, .prose-grid { grid-template-columns: 1fr; }
+    .section-num { display: none; }
+    .kj-item { grid-template-columns: 1fr; }
+    .entity-cols { grid-template-columns: 1fr; }
+    .source-row { grid-template-columns: 1fr; }
+  }
+</style>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<div class="sheet">
+
+  <header class="masthead">
+    <div class="kicker"><span class="dot"></span> OSINT ASSESSMENT · WORKING DRAFT</div>
+    <h1>Ratcliffe's Moscow Channel</h1>
+    <p class="dek">The CIA director's unannounced eight-hour stop in Moscow, and the four explanations competing to account for it.</p>
+    <div class="meta-row">
+      <span><strong>Report</strong> ratcliffe-moscow-2026</span>
+      <span><strong>Updated</strong> 2026-08-26</span>
+      <span><strong>Sourcing</strong> open source only</span>
+      <span class="status-tag">In progress</span>
+    </div>
+  </header>
+
+  <section>
+    <div class="prose-grid">
+      <p class="lede">CIA Director John Ratcliffe made an unannounced, roughly eight-and-a-half-hour visit to Moscow on 25 August 2026 — a US government transport aircraft flying Joint Base Andrews to Moscow via Latvia. It is his first known trip to Russia as CIA director. The Kremlin confirmed contacts with Russian intelligence officials but denied any meeting with Putin. Neither government has disclosed what was discussed. Kyiv was reportedly notified in advance and asked to pause strikes on Russia for the visit's duration.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-num">01</span>
+      <h2>Key Judgments</h2>
+    </div>
+    <div class="section-body kj-list">
+      <div class="kj-item">
+        <span class="kj-id">KJ1</span>
+        <div>
+          <span class="pill high">High confidence — dipped, then restored on verification</span>
+          <p class="kj-text">An intelligence-to-intelligence channel (CIA ↔ SVR/FSB), not a head-of-state meeting. Peskov's denial was unambiguous and repeated independently to TASS and the Washington Post; a "Putin met Ratcliffe" framing traced back to a narrower claim (Putin cancelled a public event) inflated by secondary sources — see §08.</p>
+        </div>
+      </div>
+      <div class="kj-item">
+        <span class="kj-id">KJ2</span>
+        <div>
+          <span class="pill medium">Medium confidence</span>
+          <p class="kj-text">Primary topic likely Ukraine war de-escalation, or reviving the stalled peace process. Kyiv was pre-notified and asked to halt strikes; Trump referenced wanting the war to end.</p>
+        </div>
+      </div>
+      <div class="kj-item">
+        <span class="kj-id">KJ3</span>
+        <div>
+          <span class="pill low">Low–medium confidence</span>
+          <p class="kj-text">Iran and sanctions enforcement may have been a secondary topic — analyst speculation only, no official confirmation from either government.</p>
+        </div>
+      </div>
+      <div class="kj-item">
+        <span class="kj-id">KJ4</span>
+        <div>
+          <span class="pill low">Low confidence — detainee identity confirmed, link unconfirmed</span>
+          <p class="kj-text">Charles Zimmerman is a real, independently-corroborated imprisoned American (US Navy veteran, 5-year Sochi sentence). A reported iStories claim links one of Putin's undisclosed decrees to a possible Zimmerman pardon — more specific than the earlier Telegram lead, but <strong>not independently verified</strong> here (no primary source located). The Gilman precedent it echoes is itself a real decree/pardon-based release — for a different, earlier, unrelated case.</p>
+        </div>
+      </div>
+      <div class="kj-item">
+        <span class="kj-id">KJ5</span>
+        <div>
+          <span class="pill medium">Medium–high confidence</span>
+          <p class="kj-text">Choosing an intelligence rather than diplomatic channel signals deniability and lower political cost while the formal negotiating track is stalled.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-num">02</span>
+      <h2>Competing Hypotheses</h2>
+    </div>
+    <div class="section-body hyp-list">
+      <div class="hyp lead">
+        <p class="hyp-label"><span class="h-id">H1</span>Crisis de-escalation, or warning</p>
+        <p>US warning based on intelligence of a new Russian mobilization wave and a possible provocation against NATO — confirmed specific via WSJ sourcing during verification (§08), not just vague speculation. Echoes the 2021 Burns precedent, though the underlying context differs — an ongoing war rather than a pre-invasion moment.</p>
+        <span class="likelihood">Plausible · best-evidenced after verification</span>
+      </div>
+      <div class="hyp lead">
+        <p class="hyp-label"><span class="h-id">H2</span>Revive stalled peace talks</p>
+        <p>Most consistent with the available evidence: the diplomatic track has stagnated since the Alaska summit, and the CIA is being used as an informal back-channel outside that exhausted process — reinforced by the confirmed visit-scoped strike pause.</p>
+        <span class="likelihood">Plausible · best supported</span>
+      </div>
+      <div class="hyp">
+        <p class="hyp-label"><span class="h-id">H3</span>Transactional humanitarian diplomacy</p>
+        <p>Groundwork for a detainee or prisoner exchange. Charles Zimmerman is confirmed real and imprisoned (US Navy veteran, 5-year Sochi sentence) — but the Gilman "precedent" the Telegram speculation invokes actually predates this visit by ~2 weeks and used a separate direct Trump–Putin channel, weakening the causal link to this specific trip while confirming the general pattern is real.</p>
+        <span class="likelihood">Possible · weaker after verification</span>
+      </div>
+      <div class="hyp">
+        <p class="hyp-label"><span class="h-id">H4</span>Routine intelligence coordination</p>
+        <p>Trump's own framing — "semi-routine." Least likely as a full explanation: the visitor's seniority and the trip's operational visibility argue against "routine." Revised twice: not envoy substitution, and not a fresh parallel channel either — Witkoff/Kushner run an <em>established</em> Moscow channel (Putin meetings Dec 2025/Jan 2026) that was simply postponed by the Kyiv security situation at this exact moment, making Ratcliffe's trip a plausible gap-filler.</p>
+        <span class="likelihood">Low · likely rhetorical minimization</span>
+      </div>
+      <div class="verdict"><strong>Assessment.</strong> H1 and H2 are not mutually exclusive, and together remain the most likely explanation — a mix of warning and an attempt to restart dialogue, with H1 now the better-evidenced of the two. H3 is weaker than first assessed. H4 reads as expectation-management, not a complete account.</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-num">03</span>
+      <h2>Timeline</h2>
+    </div>
+    <div class="section-body">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Date</th><th>Event</th><th>Source</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="date">2021-11</td><td>William Burns (CIA director) visits Moscow, warns against invading Ukraine.</td><td>BBC</td></tr>
+            <tr><td class="date">2022-02</td><td>Russia launches full-scale invasion, weeks after the Burns visit.</td><td>BBC</td></tr>
+            <tr><td class="date">2026</td><td>Trump–Putin summit in Alaska; no breakthrough on the war.</td><td>BBC</td></tr>
+            <tr><td class="date">2026-08-25</td><td>Ratcliffe flies Andrews → Moscow via Latvia, ~8.5 hours on the ground.</td><td>CBS / CNN / WaPo</td></tr>
+            <tr><td class="date">2026-08-25</td><td>US asks Ukraine to pause strikes until the delegation clears Russian airspace.</td><td>CBS / Axios via BBC</td></tr>
+            <tr><td class="date">2026-08-26</td><td>Peskov confirms the visit; denies a Putin meeting; calls it "contacts with intelligence services."</td><td>BBC / CBS</td></tr>
+            <tr><td class="date">2026-08-26</td><td>Trump: "semi-routine," "something may come out of it."</td><td>BBC</td></tr>
+            <tr><td class="date">2026-08-25</td><td>Putin signs 3 undisclosed decrees (Nos. 605–607), contents unpublished — same day, 3 public decrees signed for contrast.</td><td>Kyiv Post / NV.ua / UNN</td></tr>
+            <tr><td class="date">2026-08-25/26</td><td>Ukrainian drone strikes on Moscow resume hours after departure; ~10 drones intercepted, 3 of 4 airports briefly restricted.</td><td>ABC News</td></tr>
+            <tr><td class="date">2026-08-26</td><td><em>Unconfirmed:</em> Kremlin-pool correspondent Yunashev claims Ratcliffe did meet Putin, contradicting Peskov.</td><td>single source, uncorroborated</td></tr>
+            <tr><td class="date">2026-08-27</td><td>Russian state media reports a prospective "quite big" POW exchange in preparation — no confirmed link to this visit.</td><td>Kyiv Post</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-num">04</span>
+      <h2>Entities</h2>
+    </div>
+    <div class="section-body entity-cols">
+      <div class="entity-group">
+        <h3>Persons</h3>
+        <div class="entity"><div class="entity-name">John Ratcliffe</div><div class="entity-role">Director, CIA — first known Moscow trip in the role</div></div>
+        <div class="entity"><div class="entity-name">Dmitry Peskov</div><div class="entity-role">Kremlin press secretary — confirmed the visit</div></div>
+        <div class="entity"><div class="entity-name">Vladimir Putin</div><div class="entity-role">President, Russia — not present, reportedly briefed</div></div>
+        <div class="entity"><div class="entity-name">Donald Trump</div><div class="entity-role">President, United States</div></div>
+        <div class="entity"><div class="entity-name">William Burns</div><div class="entity-role">Former CIA director — 2021 precedent</div></div>
+        <div class="entity"><div class="entity-name">Ksenia Karelina</div><div class="entity-role">Prior US–Russia detainee-release case</div></div>
+      </div>
+      <div class="entity-group">
+        <h3>Organizations</h3>
+        <div class="entity"><div class="entity-name">CIA</div><div class="entity-role">United States</div></div>
+        <div class="entity"><div class="entity-name">Kremlin / Presidential Administration</div><div class="entity-role">Russia</div></div>
+        <div class="entity"><div class="entity-name">SVR / FSB (unspecified branch)</div><div class="entity-role">Russia — intelligence counterpart</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-num">05</span>
+      <h2>Indicators to Watch</h2>
+    </div>
+    <div class="section-body">
+      <ul class="indicator-list">
+        <li>Change in tempo of Russian strikes on Ukrainian infrastructure, or Ukrainian strikes on Russian refineries, over the next 1–2 weeks.</li>
+        <li>New formal Russia–Ukraine–US talks announced within 2–4 weeks — would support H2.</li>
+        <li>Reports of American detainee releases — would support H3.</li>
+        <li>New US sanctions targeting Russia–Iran trade entities — would support the Iran angle in H3/KJ3.</li>
+        <li>Further unannounced high-level Moscow ↔ Washington visits — would indicate an ongoing back-channel rather than a one-off.</li>
+        <li>Putin's own public statement, so far absent — would signal the political weight he assigns to the meeting.</li>
+        <li><strong>New, top priority:</strong> independent Western corroboration or denial that Putin personally met Ratcliffe (Yunashev claim vs. Peskov denial).</li>
+        <li>Any disclosure of the contents of Putin's decrees 605–607.</li>
+        <li>Confirmation or denial that the reported prospective POW exchange is linked to this visit.</li>
+        <li>Any US or Russian official statement naming Zimmerman specifically in connection with this visit — currently zero, traced only to an unsourced Ksenia Sobchak Telegram post.</li>
+        <li>Rescheduled date for the postponed Witkoff/Kushner Kyiv visit — still not found as of the latest follow-up.</li>
+        <li><strong>Primary-source verification of the iStories claim</strong> that a Putin decree may have pardoned Zimmerman — currently unconfirmed; would be the strongest possible upgrade to KJ4/H3 if verified.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-num">06</span>
+      <h2>Backgrounds &amp; Screening</h2>
+    </div>
+    <div class="section-body">
+      <p style="font-size:0.88rem;color:var(--muted);margin-bottom:1.4rem;">Prismatic's OSINT/DD layer is ~95% Czech-registry-only (ARES, Justice.cz, ISIR) and inapplicable to this case. The globally-relevant tool classes — sanctions adapters and GDELT — were run as manual OSINT equivalents below.</p>
+
+      <div class="entity-cols" style="margin-bottom:1.6rem;">
+        <div class="entity-group">
+          <h3>John Ratcliffe — background</h3>
+          <p style="font-size:0.9rem;color:var(--ink-soft);margin-bottom:0.6rem;">US Attorney (E.D. Texas) → Mayor of Heath, TX → US Rep, TX-4 (Intelligence/Homeland Security/Judiciary) → DNI (2020) → CIA Director (2024).</p>
+          <p style="font-size:0.9rem;color:var(--ink-soft);"><strong style="color:var(--ink);">2020:</strong> ended in-person election-security briefings; declassified unverified Russian-sourced material on Clinton 35 days pre-election, later acknowledging uncertainty about its accuracy. Relevant lens on the administration's "semi-routine" framing.</p>
+        </div>
+        <div class="entity-group">
+          <h3>Dmitry Peskov — background</h3>
+          <p style="font-size:0.9rem;color:var(--ink-soft);margin-bottom:0.6rem;">Soviet/Russian Foreign Ministry (1989) → Embassy Ankara → Putin's press secretary since 2000, in the current role since 2008. Diplomatic/communications track, not intelligence-operational.</p>
+          <p style="font-size:0.9rem;color:var(--ink-soft);"><strong style="color:var(--ink);">Sanctions:</strong> already a US SDN designee (disinformation role); family separately sanctioned. Pre-existing, unrelated to this visit — reinforces KJ1: he's the conduit, not a principal.</p>
+        </div>
+      </div>
+
+      <div class="kj-item" style="margin-bottom:0.8rem;">
+        <span class="kj-id">OFAC / EU / UN / Open­Sanctions</span>
+        <div>
+          <span class="pill low">Negative result</span>
+          <p class="kj-text">SDN list updated 2026-08-24, one day pre-visit — no new Russia-intelligence designation found tied to the trip; no FSB/SVR official newly listed. Logged as a finding, re-check if the diplomatic track moves.</p>
+        </div>
+      </div>
+      <div class="kj-item">
+        <span class="kj-id">GDELT media pass</span>
+        <div>
+          <span class="pill medium">Applicable, not yet run live</span>
+          <p class="kj-text">Right tool class for this story — global tone/actor-network monitoring — but a live GKG/BigQuery query wasn't performed this session. Coverage sampling confirms broad international salience (Tribune India, Mediaite, Roic News, beyond the core US/UK set). Flagged as the next concrete step.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-num">08</span>
+      <h2>Live GDELT Sweep</h2>
+    </div>
+    <div class="section-body">
+      <p style="font-size:0.88rem;color:var(--muted);margin-bottom:1rem;">Direct query against the GDELT DOC 2.0 API — 75 sampled articles, 15 source countries, query "Ratcliffe Moscow," 2026-08-25/26. This is the live pull flagged as a next step in §06.</p>
+
+      <div class="verdict" style="background:var(--paper-raised);border:1px solid var(--line);margin-top:0;margin-bottom:1.2rem;">
+        <strong style="color:var(--ink);">Coverage footprint.</strong> US 41 · India 10 · Israel 5 · UK 4 · Pakistan/Ukraine/Germany/Russia 2 each · 7 more countries at 1 — confirms a high-salience global story. Tone is heavily negative: the densest bin (63 of 75 articles) sits around −4, with a tail to −8 ("hybrid war," nuclear-use speculation, NATO-test framing).
+      </div>
+
+      <div class="kj-list">
+        <div class="kj-item">
+          <span class="kj-id">New</span>
+          <div>
+            <span class="pill medium">Medium–high confidence</span>
+            <p class="kj-text">Putin signed three <strong>undisclosed</strong> decrees (Nos. 605–607) on 25 August — same day as the visit; three public decrees (608–610, routine reassignments) were signed for contrast. Multi-outlet corroboration (Kyiv Post, NV.ua, UNN, Charter'97); content and causal link to the visit unconfirmed.</p>
+          </div>
+        </div>
+        <div class="kj-item">
+          <span class="kj-id">Resolved</span>
+          <div>
+            <span class="pill high">Clarified on verification</span>
+            <p class="kj-text">Kremlin-pool correspondent Alexander Yunashev's actual claim is narrower than "Putin met Ratcliffe" — he reported Putin <em>cancelled a large scheduled event</em> ("hundreds of people" had prepared). Secondary outlets inflated this into a confirmed meeting. Peskov's denial — "no meetings of any kind with the Russian president" — was independently repeated to both TASS and the Washington Post. KJ1 restored to High; the schedule-clearing itself remains a real, unexplained data point.</p>
+          </div>
+        </div>
+        <div class="kj-item">
+          <span class="kj-id">New</span>
+          <div>
+            <span class="pill high">High confidence</span>
+            <p class="kj-text">Ukrainian drone strikes on Moscow resumed within hours of Ratcliffe's departure — ~10 drones intercepted (of 426 claimed shot down nationwide), 3 of 4 Moscow airports briefly restricted. Confirms the strike pause was real but narrowly scoped to the visit window, not a broader de-escalation — reinforces KJ2.</p>
+          </div>
+        </div>
+        <div class="kj-item">
+          <span class="kj-id">New</span>
+          <div>
+            <span class="pill low">Low confidence</span>
+            <p class="kj-text">Some outlets framed the visit as an Oreshnik/Poseidon-linked warning to Europe/UK — sourced to a single low-tier outlet, and Trump explicitly denied any NATO-warning purpose. Folded into H1 context, not elevated to its own judgment. The reported POW exchange, on verification, is a routine series installment (103-for-103 on 19 Aug, another already expected before month-end) — not visit-triggered.</p>
+          </div>
+        </div>
+      </div>
+
+      <h3 style="font-family:var(--mono);font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin:1.8rem 0 0.8rem;font-weight:600;">Further deepening — Meduza &amp; Russian military-blogger analysis</h3>
+      <ul class="indicator-list">
+        <li><strong>Broader disruption context:</strong> Meduza frames this as the first visit by any senior US administration official to Russia since January 2026 — a longer channel freeze than the CIA-specific framing alone suggested.</li>
+        <li><strong>Named-detainee lead:</strong> a Russian Telegram channel speculated a link to the release of Charles Zimmerman, a named American detainee, drawing an analogy to the recent release of Robert Gilman. Single-channel, unconfirmed by Western outlets.</li>
+        <li><strong>Envoy substitution signal:</strong> Russian military bloggers note Ratcliffe came instead of Trump's usual interlocutors Steve Witkoff and Jared Kushner — read domestically as a deliberate signal of gravity, reinforcing KJ5.</li>
+        <li>Russian mil-blogger interpretations are themselves divergent — escalation warning, a sign the US is preparing to abandon Ukraine, or a direct warning — no internal consensus.</li>
+      </ul>
+      <p class="caveat" style="margin-top:1.4rem;padding-top:1rem;">
+        <strong>Scope note.</strong> This deepening pass used only public web search and article reads of already-published journalism and social commentary. A mid-session request to extend into Google-dorking / gray-technique reconnaissance (admin-panel, config-file, and credential discovery) against CIA.gov, Kremlin.ru, or related government infrastructure was declined — unauthorized reconnaissance of sovereign government systems is out of scope for any legitimate OSINT/DD use case here and isn't something in-chat authorization can green-light. The request was repeated and declined a second time.
+      </p>
+
+      <h3 style="font-family:var(--mono);font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin:1.8rem 0 0.8rem;font-weight:600;">Third deepening pass — detainee lead, envoy-channel structure, aftermath</h3>
+      <div class="kj-list">
+        <div class="kj-item">
+          <span class="kj-id">Zimmerman</span>
+          <div>
+            <span class="pill high">Person confirmed, link unconfirmed</span>
+            <p class="kj-text">Charles Zimmerman: US Navy veteran intercepted by the Russian Navy in international waters near the Black Sea, forced to Sochi, sentenced to 5 years for an undeclared firearm — independently corroborated by four outlets. Real, imprisoned, plausible bargaining-chip case. His link to <em>this</em> visit remains a single Telegram channel's claim.</p>
+          </div>
+        </div>
+        <div class="kj-item">
+          <span class="kj-id">Gilman</span>
+          <div>
+            <span class="pill medium">Re-dated — weakens the analogy</span>
+            <p class="kj-text">Robert Gilman was released 12 August — nearly two weeks <em>before</em> this visit — via a separate, direct Trump–Putin channel and a humanitarian pardon. The Telegram speculation invoking Gilman as precedent for Zimmerman is pointing to an already-closed, unrelated case, not a parallel process running through this trip.</p>
+          </div>
+        </div>
+        <div class="kj-item">
+          <span class="kj-id">Witkoff / Kushner</span>
+          <div>
+            <span class="pill medium">Parallel channel, not substitution</span>
+            <p class="kj-text">Both were independently active around the same period — expected in Kyiv near 24 August for their first visit as principal US intermediaries, a Moscow follow-on already under discussion, Zelensky citing "daily contact." Revises §08's earlier envoy-substitution framing: Ratcliffe ran <em>alongside</em> the diplomatic track, not in place of it.</p>
+          </div>
+        </div>
+        <div class="kj-item">
+          <span class="kj-id">Trump</span>
+          <div>
+            <span class="pill low">Claims, not verified findings</span>
+            <p class="kj-text">Trump explicitly denied both a NATO-warning purpose and a Hormuz/Iran-sanctions-relief ask. Logged as an interested party's on-record denials, not independently verified.</p>
+          </div>
+        </div>
+      </div>
+
+      <h3 style="font-family:var(--mono);font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin:1.8rem 0 0.8rem;font-weight:600;">Indicator follow-up — same day, later</h3>
+      <div class="kj-list">
+        <div class="kj-item">
+          <span class="kj-id">Zimmerman</span>
+          <div>
+            <span class="pill low">Unchanged — source now attributed</span>
+            <p class="kj-text">The speculation traces to Ksenia Sobchak (Russian journalist/media personality) posting on Telegram without citing a source — a more specific attribution, not stronger evidence. Neither government has confirmed a link. Indicator remains negative, as expected.</p>
+          </div>
+        </div>
+        <div class="kj-item">
+          <span class="kj-id">Witkoff / Kushner</span>
+          <div>
+            <span class="pill medium">Revised again — same channel, temporarily stalled</span>
+            <p class="kj-text">Their Kyiv trip was <strong>postponed, not cancelled</strong>, due to intensified Russian strikes around 23–24 August — the same window as the Ratcliffe trip. They run an <em>established</em> Moscow channel (a five-hour Putin meeting in December 2025, a further one reported for January 2026) — not a fresh parallel track as first read. This was the usual diplomatic channel stuck at the worst possible moment, which plausibly made Ratcliffe's direct trip a way to keep time-sensitive messaging moving — reinforcing H1/H2 over H4.</p>
+          </div>
+        </div>
+      </div>
+
+      <h3 style="font-family:var(--mono);font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin:1.8rem 0 0.8rem;font-weight:600;">Prismatic OSINT/DD deep survey — ultracode workflow</h3>
+      <p style="font-size:0.88rem;color:var(--muted);margin-bottom:1rem;">A 5-way parallel Workflow sweep across Prismatic's 33 OSINT/DD apps and 136 source adapters, plus a consolidation pass and a targeted viability check. 92 of 136 adapters are genuinely global (not Czech-bound), but almost none add real new capability here beyond what §06/§08 already use. Two stood out:</p>
+      <div class="kj-list">
+        <div class="kj-item">
+          <span class="kj-id">Wayback Machine</span>
+          <div>
+            <span class="pill high">Runnable now, no API key</span>
+            <p class="kj-text">Queried live via direct CDX API calls (bypassing full app boot): <strong>Kremlin.ru</strong> — exactly 1 snapshot in the visit window, no evidence of multiple revisions; a press/briefing subpath query returned zero results (not archived, or different URL scheme). <strong>CIA.gov director page</strong> — 1 snapshot, same day as the visit, no evidence of alteration. <strong>CIA.gov press-releases section</strong> — zero results. <strong>This report's own BBC source article</strong> — exactly 1 capture, 1 content digest, no evidence of silent post-publication edits. <em>Negative result, logged as a finding</em>: no evidence of silently edited/taken-down official pages found, though path-level Wayback coverage is incomplete.</p>
+          </div>
+        </div>
+        <div class="kj-item">
+          <span class="kj-id">NewsAPI</span>
+          <div>
+            <span class="pill low">Blocked — missing API key</span>
+            <p class="kj-text">Would have added a second, independent article-level news source alongside GDELT. Requires <code>NEWSAPI_API_KEY</code>, present in no tracked env file in this dev environment — would need third-party signup. Not pursued; out of session scope.</p>
+          </div>
+        </div>
+      </div>
+      <p style="font-size:0.88rem;color:var(--ink-soft);margin-top:1.2rem;"><strong style="color:var(--ink);">Two remaining candidates checked and ruled out.</strong> <code>court_records.ex</code>: its docstring claims multi-jurisdiction coverage, but the code implements only Czech InfoSoud — the EU/CURIA branch is a dead stub, and any non-CZ/EU jurisdiction (including US/Russia) falls through to a handler that also returns nothing. Structurally incapable of surfacing anything about Zimmerman, regardless of API key. <code>intelligencex.ex</code> (leak/darkweb search): a functionally complete implementation, but blocked on a missing, paid <code>INTELLIGENCEX_API_KEY</code> — same operational block as NewsAPI. Prismatic's OSINT/DD surface is now considered exhausted for this case.</p>
+      <p class="caveat" style="margin-top:0.8rem;padding-top:1rem;">Also ruled out by the sweep: all 41 Czech-registry adapters and CZ-bound apps (already established); all 546 <code>.claude/agents/*</code> "OSINT specialist" personas, confirmed prose-only stubs with no wired API/credential binding; the "special forces" skills (falcon-strike, siege-master, green-beret, navy-seal, delta-force, ghost-recon) — all route to the same generic command agent with no real data layer; commercial person-enrichment adapters (Pipl, FullContact, Clearbit, ZoomInfo) — low yield for already-public figures.</p>
+
+      <h3 style="font-family:var(--mono);font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin:1.8rem 0 0.8rem;font-weight:600;">Follow-up on user request: correct URL patterns + remaining indicators</h3>
+      <div class="kj-list">
+        <div class="kj-item">
+          <span class="kj-id">Wayback, take two</span>
+          <div>
+            <span class="pill high">Much stronger negative result</span>
+            <p class="kj-text">The first pass guessed wrong paths. This one found the <em>real</em> structures via CDX prefix search and re-queried: <strong><code>cia.gov/stories/press-releases-and-statements/</code></strong> — 5 snapshots on the visit day, all sharing the identical content digest; the page didn't change at all, including after Ratcliffe's departure, and headlines are unrelated to the visit. <strong><code>kremlin.ru/events/administration/{id}</code></strong> — two specific event IDs from the visit window fetched directly, both confirmed unrelated (a desertification-policy forum; a child-reunification update). This is "right path, archived repeatedly, demonstrably unchanged" — a meaningfully stronger negative than the first pass.</p>
+          </div>
+        </div>
+        <div class="kj-item">
+          <span class="kj-id">iStories claim</span>
+          <div>
+            <span class="pill low">Unverified — logged as an open lead</span>
+            <p class="kj-text">A newer report claims the independent Russian outlet <strong>iStories</strong> stated one of Putin's undisclosed decrees may have been a pardon for Zimmerman — more specific than the earlier Telegram lead. A direct follow-up search for the primary iStories article found none — only secondary summaries repeating the claim. Treated as unconfirmed, not a KJ4 upgrade. Separately confirmed: Gilman's release was itself decree/pardon-based, so the mechanism the iStories claim describes is a real, precedented pattern at this Kremlin — which is exactly why the claim is plausible even though unverified here.</p>
+          </div>
+        </div>
+        <div class="kj-item">
+          <span class="kj-id">Witkoff/Kushner &amp; Putin</span>
+          <div>
+            <span class="pill low">Still open</span>
+            <p class="kj-text">No rescheduled Kyiv date found (confirmed again as "postponed, not cancelled"). No direct Putin statement found; Peskov's position is now fully quoted — intelligence contacts as "a positive development," but "too early to say" what it means for the broader relationship.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-num">08b</span>
+      <h2>Hourly Re-sweep (22:30 CEST)</h2>
+    </div>
+    <div class="section-body">
+      <p class="kj-text"><strong>Zimmerman / "iStories" lead — attribution corrected.</strong> Meduza's own 25 Aug article owns the observation that decrees 605–607 are missing from the register and attributes the Zimmerman-pardon link to Ksenia Sobchak, explicitly "no source". The "iStories" attribution reached this report through a secondary chain that also mis-counts the decrees (two vs three). Status downgraded to <em>attribution unreliable</em>; KJ4 stays Low. Meduza: five Americans still held in Russia.</p>
+      <p class="kj-text"><strong>Naryshkin.</strong> The Spectator asserts, unsourced, that Ratcliffe "certainly spoke to" SVR chief Sergei Naryshkin. The Kremlin has declined to identify anyone. Logged as plausible-but-unconfirmed; an established Ratcliffe–Naryshkin line (March 2025 call) makes it credible.</p>
+      <p class="kj-text"><strong>Iran angle — commentary, not evidence.</strong> Spectator (Sanner, Greene) makes Iran its primary theory; Newsweek's six-hypothesis roundup (Bowman, Howard) keeps Ukraine first. KJ3 unchanged at Low–Medium.</p>
+      <p class="kj-text"><strong>Still open:</strong> no Putin statement; no Witkoff/Kushner reschedule date (Moscow leg also delayed per TASS); no talks announcement; no official Zimmerman mention.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-num">09</span>
+      <h2>Sourcing</h2>
+    </div>
+    <div class="section-body source-list">
+      <div class="source-row"><span class="source-outlet">BBC</span><a href="https://www.bbc.com/news/articles/c0klj7ykp81o" target="_blank" rel="noopener">Trump says "something may come out of" CIA head's unannounced visit to Moscow</a></div>
+      <div class="source-row"><span class="source-outlet">CBS News</span><a href="https://www.cbsnews.com/news/cia-director-john-ratcliffe-russia-secret-trip/" target="_blank" rel="noopener">Ratcliffe met Russian intel counterparts, Kremlin says</a></div>
+      <div class="source-row"><span class="source-outlet">CNN</span><a href="https://www.cnn.com/2026/08/25/politics/cia-director-visits-moscow" target="_blank" rel="noopener">CIA director makes unannounced visit to Moscow</a></div>
+      <div class="source-row"><span class="source-outlet">Newsweek</span><a href="https://www.newsweek.com/john-ratcliffe-cia-moscow-russia-trip-putin-12368735" target="_blank" rel="noopener">Ratcliffe's Mystery Moscow Trip Is a Choose-Your-Own-Adventure Story</a></div>
+      <div class="source-row"><span class="source-outlet">Washington Post</span><a href="https://www.washingtonpost.com/national-security/2026/08/25/cia-director-moscow-rare-unannounced-trip/" target="_blank" rel="noopener">CIA director makes rare, unannounced visit to Moscow</a></div>
+      <div class="source-row"><span class="source-outlet">UPI</span><a href="https://www.upi.com/Top_News/US/2026/08/26/CIA-director-Moscow-talks/3801787745328/" target="_blank" rel="noopener">CIA chief in secret mission to Moscow amid "crisis" ties</a></div>
+      <div class="source-row"><span class="source-outlet">RFE/RL</span><a href="https://www.rferl.org/a/russia-us-cia-unannounced-rare-visit/33839330.html" target="_blank" rel="noopener">Surprise Moscow Trip Raises Questions Over Russia, Ukraine, Iran</a> <span style="color:var(--muted)">— fetch blocked, search snippet only</span></div>
+      <div class="source-row"><span class="source-outlet">Kyiv Post</span><a href="https://www.kyivpost.com/post/83128" target="_blank" rel="noopener">Putin Signs Three Secret Decrees as CIA Chief Makes Surprise Moscow Visit</a></div>
+      <div class="source-row"><span class="source-outlet">ABC News</span><a href="https://abcnews.com/International/ukrainian-drone-attacks-moscow-resume-hours-after-ratcliffe/story?id=135962437" target="_blank" rel="noopener">Ukrainian drone attacks on Moscow resume hours after CIA director's visit, mayor says</a></div>
+      <div class="source-row"><span class="source-outlet">Kyiv Post</span><a href="https://www.kyivpost.com/post/83133" target="_blank" rel="noopener">Russia, Ukraine Preparing Another "Quite Big" POW Exchange, Russian State Media Says</a></div>
+      <div class="source-row"><span class="source-outlet">GDELT Project</span><a href="https://api.gdeltproject.org/api/v2/doc/doc" target="_blank" rel="noopener">DOC 2.0 API — live query, "Ratcliffe Moscow," 2026-08-25/26</a></div>
+      <div class="source-row"><span class="source-outlet">Meduza</span><a href="https://meduza.io/en/feature/2026/08/25/cia-director-john-ratcliffe-made-an-unannounced-visit-to-moscow-here-s-what-we-know" target="_blank" rel="noopener">CIA director John Ratcliffe made an unannounced visit to Moscow. Here's what we know.</a></div>
+      <div class="source-row"><span class="source-outlet">X / @ChrisO_wiki</span><a href="https://threadreaderapp.com/thread/2092337199052181803.html" target="_blank" rel="noopener">Thread — Russian military-blogger reactions to the Ratcliffe visit</a></div>
+      <div class="source-row"><span class="source-outlet">CBS News</span><a href="https://www.cbsnews.com/news/russia-gives-u-s-man-5-year-prison-term-for-it-says-illegally-transporting-weapons/" target="_blank" rel="noopener">Russia gives U.S. man 5-year prison term for illegally transporting weapons (Zimmerman)</a></div>
+      <div class="source-row"><span class="source-outlet">NPR</span><a href="https://www.npr.org/2026/08/12/g-s1-138323/former-us-marine-russia" target="_blank" rel="noopener">Former U.S. Marine held in Russia on disputed charges has been released (Gilman, 12 Aug)</a></div>
+      <div class="source-row"><span class="source-outlet">Kyiv Post</span><a href="https://www.kyivpost.com/post/81424" target="_blank" rel="noopener">Witkoff and Kushner Expected in Kyiv for First Ukraine Visit</a></div>
+      <div class="source-row"><span class="source-outlet">Forbes</span><a href="https://www.forbes.com/sites/alisondurkee/2026/08/26/trump-claims-cia-director-ratcliffes-surprise-trip-to-russia-is-semi-routine/" target="_blank" rel="noopener">Trump Downplays Ratcliffe's Trip: "Semi-Routine" — NATO/Hormuz denials</a></div>
+      <div class="source-row"><span class="source-outlet">Ukrainska Pravda</span><a href="https://www.pravda.com.ua/eng/news/2026/08/24/8049996/" target="_blank" rel="noopener">Witkoff and Kushner delay planned Ukraine visit amid Russian strikes</a></div>
+      <div class="source-row"><span class="source-outlet">Fox News</span><a href="https://www.foxnews.com/politics/witkoff-kushner-scheduled-meet-putin-moscow" target="_blank" rel="noopener">Witkoff and Kushner scheduled to meet Putin in Moscow (established channel precedent)</a></div>
+      <div class="source-row"><span class="source-outlet">Moscow Times</span><a href="https://www.themoscowtimes.com/2026/08/11/putin-pardons-former-us-marine-imprisoned-in-russia-reuters-a93457" target="_blank" rel="noopener">Putin Pardons Former U.S. Marine Imprisoned in Russia — Reuters (Gilman, decree/pardon mechanism)</a></div>
+      <div class="source-row"><span class="source-outlet">Web Archive</span><a href="https://web.archive.org/cdx/search/cdx" target="_blank" rel="noopener">Wayback Machine CDX API — live queries, cia.gov/stories &amp; kremlin.ru/events/administration</a></div>
+    </div>
+  </section>
+
+  <p class="caveat">Open-source only; no classified access. Several judgments — notably H1's mobilization claim — rest on a single reported source and are not independently corroborated. Neither government has confirmed the substance of the talks.</p>
+
+  <footer>
+    <span>ratcliffe-moscow-2026 · working draft</span>
+    <span>next: primary-source check on the iStories/Zimmerman claim</span>
+  </footer>
+
+</div>

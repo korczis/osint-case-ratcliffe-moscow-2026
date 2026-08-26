@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<title>Ratcliffe's Moscow Channel — zpravodajské hodnocení</title>
+<style>
+  @page {
+    size: A4;
+    margin: 22mm 18mm 20mm 18mm;
+    @bottom-left { content: "ratcliffe-moscow-2026 · OSINT pracovní verze"; font-family: 'IBM Plex Mono', monospace; font-size: 8pt; color: #857c6d; }
+    @bottom-right { content: "Strana " counter(page) " / " counter(pages); font-family: 'IBM Plex Mono', monospace; font-size: 8pt; color: #857c6d; }
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'IBM Plex Sans', Arial, sans-serif;
+    font-size: 10.3pt;
+    line-height: 1.5;
+    color: #1c1a17;
+    margin: 0;
+  }
+  h1, h2, h3 { font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; color: #1c1a17; }
+  h1 { font-size: 22pt; margin: 0 0 4pt; line-height: 1.15; }
+  .dek { font-size: 11pt; color: #4a453d; margin: 0 0 10pt; max-width: 90%; }
+  .meta { font-family: 'IBM Plex Mono', monospace; font-size: 8pt; color: #857c6d; margin-bottom: 4pt; }
+  .kicker { font-family: 'IBM Plex Mono', monospace; font-size: 8pt; letter-spacing: 0.1em; text-transform: uppercase; color: #a13d2e; margin-bottom: 8pt; }
+  header { border-bottom: 2pt solid #1c1a17; padding-bottom: 10pt; margin-bottom: 16pt; }
+  h2 { font-size: 14pt; margin: 20pt 0 8pt; border-bottom: 1pt solid #dcd5c6; padding-bottom: 4pt; }
+  h2 .num { font-family: 'IBM Plex Mono', monospace; font-weight: 400; font-size: 9pt; color: #857c6d; margin-right: 6pt; }
+  h3 { font-size: 10.5pt; margin: 12pt 0 4pt; }
+  p { margin: 0 0 8pt; orphans: 3; widows: 3; }
+  table { width: 100%; border-collapse: collapse; font-size: 9pt; margin-bottom: 10pt; }
+  th, td { text-align: left; padding: 5pt 6pt; border-bottom: 0.5pt solid #dcd5c6; vertical-align: top; }
+  thead th { font-family: 'IBM Plex Mono', monospace; font-size: 7.5pt; letter-spacing: 0.04em; text-transform: uppercase; color: #857c6d; border-bottom: 1pt solid #c7bea9; }
+  .pill { display: inline-block; font-family: 'IBM Plex Mono', monospace; font-size: 7.5pt; letter-spacing: 0.03em; text-transform: uppercase; padding: 1pt 6pt; border-radius: 8pt; font-weight: 600; margin-bottom: 3pt; }
+  .high { background: #e1ebe3; color: #2f6b4f; }
+  .medium { background: #efe4cd; color: #9c6b1f; }
+  .low { background: #ecdfd6; color: #8a5a44; }
+  .kj-item, .hyp-item { padding: 7pt 9pt; background: #fbf9f5; border: 0.5pt solid #dcd5c6; border-radius: 3pt; margin-bottom: 7pt; page-break-inside: avoid; }
+  .kj-item .id, .hyp-item .id { font-family: 'IBM Plex Mono', monospace; font-size: 8pt; color: #857c6d; }
+  ul.indicators { margin: 0 0 8pt; padding-left: 14pt; }
+  ul.indicators li { margin-bottom: 4pt; }
+  .verdict { background: #e7d9d0; padding: 7pt 9pt; border-radius: 3pt; font-size: 9.5pt; margin-top: 6pt; }
+  .verdict strong { color: #a13d2e; }
+  .caveat { font-size: 8.5pt; color: #857c6d; border-top: 0.5pt solid #dcd5c6; padding-top: 8pt; margin-top: 16pt; }
+  .section-break { page-break-before: always; }
+  .decline-box { background: #fbf9f5; border-left: 3pt solid #a13d2e; padding: 6pt 9pt; font-size: 9pt; margin: 8pt 0; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="kicker">OSINT hodnocení · pracovní verze</div>
+  <h1>Ratcliffe's Moscow Channel</h1>
+  <p class="dek">Neohlášená osmihodinová zastávka šéfa CIA v Moskvě a hypotézy, které se ucházejí o vysvětlení.</p>
+  <div class="meta">Report ratcliffe-moscow-2026 · Aktualizováno 2026-08-26 · pouze otevřené zdroje</div>
+</header>
+
+<h2><span class="num">01</span>Shrnutí</h2>
+<p>Ředitel CIA John Ratcliffe uskutečnil 25. srpna 2026 neohlášenou, zhruba osmapůlhodinovou návštěvu Moskvy — vojenský transportní letoun americké vlády letěl z Joint Base Andrews do Moskvy přes Lotyšsko. Jde o jeho první známou cestu do Ruska ve funkci ředitele CIA a zároveň součást širšího vzorce: první návštěva vysokého představitele americké administrativy v Rusku od ledna 2026. Kreml potvrdil kontakty s ruskými zpravodajskými představiteli, ale popřel jakoukoli schůzku s Putinem. Žádná z vlád nezveřejnila obsah jednání. Kyjev byl předem informován a požádán o pozastavení útoků na Rusko po dobu návštěvy; útoky se obnovily během několika hodin po Ratcliffeově odletu.</p>
+
+<h2><span class="num">02</span>Klíčová hodnocení (Key Judgments)</h2>
+
+<div class="kj-item">
+  <span class="id">KJ1</span> <span class="pill high">Vysoká míra jistoty</span>
+  <p>Jde o zpravodajsko-zpravodajský kanál (CIA &harr; SVR/FSB), nikoli o schůzku na úrovni hlav států. Peskovovo popření bylo jednoznačné a nezávisle zopakované agentuře TASS i přímo listu Washington Post ("žádná schůzka jakéhokoli druhu s ruským prezidentem"). Rámec "Putin se s Ratcliffem setkal", který kolem se šířil, se ukázal jako nadinterpretace užšího tvrzení — Putin zrušil velkou naplánovanou akci — druhotnými zdroji.</p>
+</div>
+<div class="kj-item">
+  <span class="id">KJ2</span> <span class="pill medium">Střední míra jistoty</span>
+  <p>Hlavním tématem byla pravděpodobně deeskalace války na Ukrajině, případně oživení uvízlého mírového procesu. Kyjev byl předem informován a požádán o zastavení útoků; vzorec pauza-poté-obnovení (potvrzený s operačním detailem — cca 10 dronů sestřeleno, 3 ze 4 moskevských letišť krátce omezena) ukazuje, že šlo o taktickou deeskalaci vázanou na návštěvu, ne o signál širšího příměří.</p>
+</div>
+<div class="kj-item">
+  <span class="id">KJ3</span> <span class="pill low">Nízká až střední míra jistoty</span>
+  <p>Írán a vymáhání sankcí mohly být vedlejším tématem — jde jen o spekulace analytiků. Trump explicitně popřel, že by účelem návštěvy bylo požádat Rusko o pomoc s znovuotevřením Hormuzského průlivu.</p>
+</div>
+<div class="kj-item">
+  <span class="id">KJ4</span> <span class="pill low">Nízká míra jistoty</span>
+  <p>Humanitární kanál / propuštění zadržované osoby je možný. Charles Zimmerman — veterán amerického námořnictva, který si v Soči odpykává 5 let za nedeklarovanou zbraň — je reálná, nezávisle potvrzená zadržovaná osoba. Ohlášené (ale neověřené — nenalezen primární zdroj) tvrzení serveru iStories spojuje jeden z Putinových nezveřejněných dekretů s možným omilostněním Zimmermana. "Precedens" Gilmana, na který se odvolává, je sám o sobě reálné propuštění na základě dekretu/omilostnění, jen v jiném, dřívějším, nesouvisejícím případě.</p>
+</div>
+<div class="kj-item">
+  <span class="id">KJ5</span> <span class="pill medium">Středně vysoká míra jistoty</span>
+  <p>Volba zpravodajského, nikoli diplomatického kanálu signalizuje deniabilitu a nižší politické riziko. Posiluje to kontext: zavedený moskevský kanál Witkoffa a Kushnera (schůzky s Putinem v prosinci 2025 a lednu 2026) byl právě v tuto chvíli odložen kvůli bezpečnostní situaci v Kyjevě — Ratcliffeova cesta pravděpodobně tuto mezeru vyplnila pro časově citlivou komunikaci.</p>
+</div>
+
+<h2><span class="num">03</span>Konkurenční hypotézy</h2>
+
+<div class="hyp-item">
+  <span class="id">H1</span> — <strong>Krizová deeskalace, nebo varování.</strong> Podle zpravodajství Wall Street Journal mohl Ratcliffe předat varování založené na americké zpravodajské informaci o nové ruské mobilizační vlně a možné provokaci vůči NATO. Odkazuje na precedens Burnse z roku 2021. <em>Nejlépe podložená hypotéza po ověření.</em>
+</div>
+<div class="hyp-item">
+  <span class="id">H2</span> — <strong>Oživení uvízlých mírových jednání.</strong> Diplomatická stopa (Witkoff/Kushner) stagnovala a byla v tuto chvíli logisticky zablokovaná bezpečnostní situací v Kyjevě — CIA jako neformální kanál k udržení dynamiky. <em>Nejvíce v souladu s celkovými důkazy.</em>
+</div>
+<div class="hyp-item">
+  <span class="id">H3</span> — <strong>Transakční humanitární diplomacie.</strong> Příprava výměny zadržované osoby. Oslabeno po ověření: ohlášená "docela velká" výměna vězňů je rutinním pokračováním probíhající série, ne vyvolaná touto návštěvou; stopa k Zimmermanovi zůstává jediným nepodloženým tvrzením.
+</div>
+<div class="hyp-item">
+  <span class="id">H4</span> — <strong>Rutinní zpravodajská koordinace</strong> (Trumpovo vlastní rámování, "semi-rutinní"). Nejméně pravděpodobné: hodnost návštěvníka a operační viditelnost svědčí proti "rutinnosti" — šlo však o zavedený kanál, který byl zablokovaný, ne o záměrnou náhradu.
+</div>
+<div class="verdict"><strong>Hodnocení.</strong> H1 a H2 se vzájemně nevylučují a společně zůstávají nejpravděpodobnějším vysvětlením — kombinace varování a snahy udržet dialog v chodu, zatímco obvyklý kanál byl zablokovaný, přičemž H1 je po ověření lépe podložená z obou. H3 je slabší, než se zdálo zpočátku. H4 působí jako rétorické zlehčování očekávání, ne jako úplné vysvětlení.</div>
+
+<div class="section-break"></div>
+
+<h2><span class="num">04</span>Časová osa</h2>
+<table>
+<thead><tr><th style="width:16%">Datum</th><th>Událost</th><th style="width:22%">Zdroj</th></tr></thead>
+<tbody>
+<tr><td>2021-11</td><td>William Burns (ředitel CIA) navštěvuje Moskvu, varuje před invazí na Ukrajinu.</td><td>BBC</td></tr>
+<tr><td>2022-02</td><td>Rusko zahajuje plnou invazi, několik týdnů po Burnsově návštěvě.</td><td>BBC</td></tr>
+<tr><td>2025-12</td><td>Witkoff/Kushner vedou pětihodinové jednání s Putinem v Moskvě — zavedený diplomatický kanál.</td><td>WaPo</td></tr>
+<tr><td>2026-01</td><td>Witkoff/Kushner referují o dalším jednání s Putinem v Moskvě; poslední vysoká US návštěva Ruska před Ratcliffem.</td><td>Bloomberg / Moscow Times</td></tr>
+<tr><td>2026 (neurčeno)</td><td>Summit Trump–Putin na Aljašce; bez průlomu ve válce.</td><td>BBC</td></tr>
+<tr><td>2026-08-23/24</td><td>Plánovaná návštěva Witkoffa/Kushnera v Kyjevě odložena kvůli zesíleným ruským útokům; 6 evropských lídrů + britský premiér přesto přijíždí do Kyjeva.</td><td>Ukrajinska Pravda</td></tr>
+<tr><td>2026-08-25</td><td>Ratcliffe letí Andrews &rarr; Moskva přes Lotyšsko, ~8,5 hodiny na zemi. Putin podepisuje 3 nezveřejněné dekrety (605–607), obsah neznámý.</td><td>CBS / CNN / WaPo / Kyiv Post</td></tr>
+<tr><td>2026-08-25</td><td>USA žádají Ukrajinu o pozastavení útoků, dokud delegace neopustí ruský vzdušný prostor.</td><td>CBS / Axios</td></tr>
+<tr><td>2026-08-25/26</td><td>Ukrajinské dronové útoky na Moskvu se obnovují během hodin po odletu; ~10 dronů sestřeleno, 3 ze 4 letišť krátce omezena.</td><td>ABC News</td></tr>
+<tr><td>2026-08-26</td><td>Peskov potvrzuje návštěvu; popírá schůzku s Putinem. Trump: "semi-rutinní", popírá účel varování NATO i Hormuz/Írán.</td><td>BBC / Forbes</td></tr>
+<tr><td>2026-08-27</td><td>Ruská státní média referují o připravované "docela velké" výměně vězňů — rutinní pokračování série, bez potvrzené vazby na tuto návštěvu.</td><td>Kyiv Post</td></tr>
+</tbody>
+</table>
+
+<h2><span class="num">05</span>Živý GDELT sweep</h2>
+<p>Přímý dotaz na GDELT DOC 2.0 API — 75 vzorkovaných článků, <strong>15 zdrojových zemí</strong> (USA 41, Indie 10, Izrael 5, UK 4, Pákistán/Ukrajina/Německo/Rusko po 2, dalších 7 zemí po 1), dotaz "Ratcliffe Moscow", 2026-08-25/26. Potvrzuje vysoce sledovanou globální kauzu. Tón je silně negativní: nejhustší koš (63 ze 75 článků) leží kolem &minus;4, s ocasem až k &minus;8 (rámování "hybridní válka", spekulace o použití jaderných zbraní, test NATO).</p>
+
+<h2><span class="num">06</span>Indikátory ke sledování</h2>
+<ul class="indicators">
+  <li>Změna tempa ruských útoků na ukrajinskou infrastrukturu, nebo ukrajinských útoků na ruské rafinerie.</li>
+  <li>Ohlášení nových formálních jednání Rusko–Ukrajina–USA do 2–4 týdnů (podporuje H2).</li>
+  <li>Jakékoli odhalení obsahu Putinových dekretů 605–607.</li>
+  <li>Jakékoli oficiální vyjádření jmenující Zimmermana v souvislosti s touto návštěvou (zatím nula).</li>
+  <li>Ověření tvrzení iStories z primárního zdroje, spojujícího Putinův dekret s možným omilostněním Zimmermana.</li>
+  <li>Nový termín odložené návštěvy Witkoffa/Kushnera v Kyjevě — zatím nenalezen.</li>
+  <li>Putinovo vlastní veřejné vyjádření — zatím chybí.</li>
+  <li>Další neohlášené vysoké návštěvy Moskva–Washington (indikuje trvající back-channel, ne jednorázovou epizodu).</li>
+</ul>
+
+<h2><span class="num">07</span>Hloubkový průzkum Prismatic OSINT/DD</h2>
+<p>Ultracode Workflow spustil pětisměrný paralelní sweep napříč 33 OSINT/DD aplikacemi a 136 zdrojovými adaptéry Prismatic platformy, následovaný konsolidací a ověřením spustitelnosti. 92 ze 136 adaptérů je skutečně globálních (nevázaných na ČR), ale téměř žádný nepřidal novou schopnost nad rámec už využívaného GDELT/sankčního stacku. Sledováni byli dva kandidáti:</p>
+<div class="kj-item">
+  <span class="id">Wayback Machine</span> <span class="pill high">Spustitelné, bez klíče</span>
+  <p>Dotazováno naživo přímými voláními CDX API: Kremlin.ru (1 snímek v okně, žádné revize), stránka ředitele CIA.gov (1 snímek, týž den), tiskové zprávy CIA.gov (nula výsledků), vlastní BBC zdrojový článek tohoto reportu (1 záznam, 1 otisk — žádné tiché úpravy). <em>Negativní výsledek, zaznamenán jako zjištění</em>: nenalezen důkaz upravených/stažených oficiálních stránek.</p>
+</div>
+<div class="kj-item">
+  <span class="id">NewsAPI / IntelligenceX / Court Records</span> <span class="pill low">Vyřazeno</span>
+  <p>NewsAPI i IntelligenceX blokovány chybějícími (u IntelligenceX navíc placenými) API klíči, které v tomto prostředí nejsou. Court Records dle dokumentace tvrdí multi-jurisdikční pokrytí, ale kód implementuje jen český InfoSoud — strukturálně neschopný přinést cokoliv ke stopě k Zimmermanovi, bez ohledu na přihlašovací údaje.</p>
+</div>
+<div class="kj-item">
+  <span class="id">Wayback, druhý pokus</span> <span class="pill high">Silnější negativní výsledek</span>
+  <p>Nalezeny skutečné URL struktury a znovu dotázáno: <code>cia.gov/stories/press-releases-and-statements/</code> mělo 5 snímků ve stejný den se stejným obsahovým otiskem (žádná změna); dvě stránky <code>kremlin.ru/events/administration/{id}</code> z okna návštěvy byly potvrzeny jako nesouvisející. "Správná cesta, opakovaně archivovaná, prokazatelně nezměněná" — silnější než první pokus s hádanými cestami.</p>
+</div>
+
+<h2><span class="num">08</span>Poznámka k rozsahu</h2>
+<div class="decline-box">
+Toto šetření využívalo pouze veřejné vyhledávání, čtení článků, živý veřejný dotaz na GDELT API a přímé dotazy na Wayback Machine CDX. Žádost — opakovaná třikrát v průběhu session — o rozšíření na Google dorking / gray-technique průzkum (admin panely, konfigurační soubory, hledání přihlašovacích údajů) proti CIA.gov, Kremlin.ru nebo související vládní infrastruktuře byla pokaždé odmítnuta. Neautorizovaný průzkum infrastruktury suverénních vlád je mimo rozsah jakéhokoli legitimního OSINT/DD use case a nemůže být autorizován pouhým pokynem v chatu, bez ohledu na opakování.
+</div>
+
+<h2><span class="num">08b</span>Hodinový re-sweep (22:30 CEST)</h2>
+<p><strong>Stopa Zimmerman / „iStories" — opravena atribuce.</strong> Vlastní článek Meduzy z 25. 8. je zdrojem pozorování o chybějících dekretech 605–607 a vazbu na milost připisuje Ksenii Sobčak, „bez zdroje". Atribuce „iStories" přišla přes sekundární řetězec, který navíc chybně počítá dekrety (dva vs. tři). Status: nespolehlivá atribuce; KJ4 zůstává Low.</p>
+<p><strong>Naryškin.</strong> The Spectator bez zdroje tvrdí, že Ratcliffe jednal s šéfem SVR Sergejem Naryškinem; Kreml nikoho neidentifikoval. Věrohodné, nepotvrzené.</p>
+<p><strong>Íránský úhel.</strong> Konvergence komentátorů (Spectator; Newsweek) — názor, ne důkaz. KJ3 beze změny.</p>
+<p><strong>Stále otevřené:</strong> vyjádření Putina; nový termín Witkoff/Kushner; oznámení jednání; oficiální zmínka o Zimmermanovi.</p>
+
+<h2><span class="num">09</span>Výhrady</h2>
+<p class="caveat">Pouze otevřené zdroje; bez přístupu k utajovaným informacím. Několik hodnocení se opírá o jednozdrojová nebo nepodložená tvrzení (zejména stopa k Zimmermanovi a zpráva WSJ o mobilizaci) a nebyla tímto šetřením nezávisle potvrzena. Žádná z vlád nepotvrdila obsah jednání. Tento report odráží stav otevřených zdrojů k 26. 8. 2026 a bude se měnit s příchodem nových informací.</p>
+
+</body>
+</html>
