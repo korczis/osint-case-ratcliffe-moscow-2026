@@ -3,7 +3,7 @@
 A living OSINT intelligence assessment, maintained entirely with Claude Code skills and a
 few shell scripts. Open sources only; every claim carries its source and a grade.
 
-**Read it:** the published site (GitHub Pages) has the EN/CS briefs, PDFs and the full report.
+**Read it:** https://korczis.github.io/osint-case-ratcliffe-moscow-2026/ — EN/CS briefs, PDFs and the full report.
 Source of truth is [`report.md`](report.md); [`data.json`](data.json) is its structured mirror.
 
 ## Reuse this repository for your own case
@@ -25,7 +25,7 @@ Everything else is a reusable, brand-neutral OSINT-assessment toolkit:
 ### Quick start
 
 ```bash
-git clone <this repo> && cd <repo>
+git clone https://github.com/korczis/osint-case-ratcliffe-moscow-2026 && cd osint-case-ratcliffe-moscow-2026
 brew install just jq yq weasyprint   # or apt/pip equivalents
 just                                  # list tasks
 just status                           # current judgments + open indicators
