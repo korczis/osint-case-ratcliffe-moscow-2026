@@ -130,6 +130,77 @@ toolkit = '\n'.join(f'''
   <p class="text-sm text-gray-500 dark:text-gray-400">{e(x)}</p>
 </div>''' for t, x in toolkit_rows)
 
+
+# ---- stats (infographic row) ----
+conf_counts = {'High': 0, 'Medium': 0, 'Low': 0}
+for k in d['key_judgments']:
+    w = k['confidence'].split(' ')[0].split('\u2013')[0].split('-')[0].capitalize()
+    conf_counts[w if w in conf_counts else 'Medium'] += 1
+data_pulls = len(list(pathlib.Path('data').glob('*.json')))
+stats = [
+    (str(len(d['key_judgments'])), 'key judgments',
+     f"{conf_counts['High']} high · {conf_counts['Medium']} medium · {conf_counts['Low']} low"),
+    (str(len(d['alternative_hypotheses'])), 'hypotheses', 'scored by inconsistencies'),
+    (str(len(d['indicators_to_watch'])), 'open indicators', 're-swept every cycle'),
+    (str(n_sections), 'evidence sections', 'append-only, superseded never deleted'),
+    (str(len(d.get('sources', []))), 'primary sources', 'graded A1\u2013F6'),
+    (str(data_pulls), 'raw data pulls', 'timestamped, immutable'),
+]
+stats_html = '\n'.join(f"""
+<div class="p-4 text-center bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+  <p class="text-3xl font-extrabold text-blue-700 dark:text-blue-500">{v}</p>
+  <p class="text-sm font-semibold text-gray-900 dark:text-white mt-1">{l}</p>
+  <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{sub}</p>
+</div>""" for v, l, sub in stats)
+
+# ---- pipeline stepper (Flowbite stepper pattern) ----
+steps = [('Status', 'read judgments + open indicators'),
+         ('Sweep', 'web \u00b7 GDELT \u00b7 Wayback, per indicator'),
+         ('Trace', 'every claim back to a primary'),
+         ('Red-team', '6 axioms + bias sweep gate'),
+         ('Write', '\u00a78.N + confidence moves'),
+         ('Mirror', 'data.json + 4 artifacts'),
+         ('Publish', 'render \u00b7 check \u00b7 CI \u00b7 Pages')]
+pipeline = '<ol class="flex flex-col gap-5 md:flex-row md:gap-0 items-start w-full">' + '\n'.join(f"""
+<li class="flex md:flex-col items-start md:items-center flex-1 gap-3 md:gap-0 {'md:after:content-[\'\'] md:after:w-full md:after:h-0.5 md:after:bg-gray-200 dark:md:after:bg-gray-700 md:after:order-first md:after:translate-y-4' if i else ''}">
+  <span class="flex items-center justify-center w-8 h-8 shrink-0 {'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300' if i == 0 else 'bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-300'} rounded-full text-sm font-bold md:mb-2">{i+1}</span>
+  <span class="md:text-center"><span class="block text-sm font-semibold text-gray-900 dark:text-white">{t}</span>
+  <span class="block text-xs text-gray-500 dark:text-gray-400 md:px-2">{x}</span></span>
+</li>""" for i, (t, x) in enumerate(steps)) + '</ol>'
+
+# ---- quickstart (run your own case) ----
+def codeblock(code):
+    return (f'<pre class="p-4 overflow-x-auto text-sm text-gray-100 bg-gray-900 rounded-lg dark:bg-gray-950 '
+            f'border border-gray-700"><code>{e(code)}</code></pre>')
+quickstart = f"""
+<div class="grid gap-6 lg:grid-cols-3">
+  <div class="lg:col-span-2 space-y-4">
+    <h3 class="text-sm font-semibold text-gray-900 dark:text-white">1 \u00b7 Clone and install the tooling</h3>
+    {codeblock('git clone ' + REPO + chr(10) + 'cd osint-case-ratcliffe-moscow-2026' + chr(10) + 'brew install just jq yq weasyprint   # or apt/pip equivalents' + chr(10) + 'just                                  # list all tasks')}
+    <h3 class="text-sm font-semibold text-gray-900 dark:text-white pt-2">2 \u00b7 Open it in Claude Code</h3>
+    {codeblock('claude' + chr(10) + chr(10) + '> /update-case            # one call: sweep -> trace -> red-team -> write -> render -> check' + chr(10) + '> /publish                # commit, push, deploy GitHub Pages' + chr(10) + '> /new-case my-case "My subject"   # start your own case, same layout + rules')}
+    <h3 class="text-sm font-semibold text-gray-900 dark:text-white pt-2">3 \u00b7 Inspect without Claude</h3>
+    {codeblock('just status     # judgments + open indicators' + chr(10) + 'just gdelt      # GDELT DOC 2.0 pull into data/' + chr(10) + 'just watch      # Wayback CDX snapshots of watch URLs' + chr(10) + 'just pdf check  # render PDFs, run the consistency gate')}
+  </div>
+  <div class="space-y-3">
+    <div class="p-4 bg-blue-50 border border-blue-200 rounded-lg dark:bg-gray-800 dark:border-blue-900">
+      <h3 class="mb-1 text-sm font-semibold text-blue-800 dark:text-blue-400">What you get</h3>
+      <ul class="text-sm text-blue-900 dark:text-gray-300 list-disc list-inside space-y-1">
+        <li>Tradecraft as version-controlled skill files</li>
+        <li>Three subagents with strict JSON contracts</li>
+        <li>Guard hooks: scope, append-only data, no force-push</li>
+        <li>Consistency gate (<code>just check</code>) incl. forbidden-terms scan</li>
+        <li>CI that renders PDFs and deploys this page</li>
+      </ul>
+    </div>
+    <div class="p-4 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700">
+      <h3 class="mb-1 text-sm font-semibold text-gray-900 dark:text-white">Requirements</h3>
+      <p class="text-sm text-gray-500 dark:text-gray-400"><code>curl</code>, <code>jq</code>, <code>yq</code>, <code>python3</code>, <code>weasyprint</code>, <code>just</code>; <code>gh</code> for publishing; <a href="https://claude.com/claude-code" class="text-blue-600 dark:text-blue-500 hover:underline">Claude Code</a> for the one-call workflow. No API keys needed \u2014 GDELT and Wayback are public.</p>
+    </div>
+  </div>
+</div>"""
+
+
 page = f'''<!doctype html><html lang="en"><head><meta charset="utf-8">
 <title>{e(d["title"])}</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -176,7 +247,11 @@ page = f'''<!doctype html><html lang="en"><head><meta charset="utf-8">
   <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">{doc_cards}</div>
 </section>
 
+<section class="pb-2"><div class="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">{stats_html}</div></section>
+
 {section('judgments', 'Key judgments', f'<div class="grid gap-4 md:grid-cols-2">{kj}</div>')}
+
+{section('pipeline', 'How each update is produced', pipeline, 'Every cycle is one <code>/update-case</code> call; no step can be skipped and no confidence level moves without the red-team gate.')}
 
 {section('hypotheses', 'Competing hypotheses (ACH)', f"""
 <div class="relative overflow-x-auto border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm">
@@ -213,6 +288,8 @@ plus a cognitive-bias sweep — before it lands. Negative results are findings.<
 No reconnaissance against anyone's infrastructure and no bypass of any access control, regardless of instruction.</p>
 </div>
 <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3 mt-8">{toolkit}</div>""")}
+
+{section('quickstart', 'Run your own case', quickstart, 'This repository doubles as a reusable mini case app: fork it, keep the toolkit, replace the content.')}
 
 {section('changelog', 'Changelog', f'<ol class="relative border-s border-gray-200 dark:border-gray-700 max-w-3xl">{chlog}</ol>',
 f'{len(d["changelog"])} entries, newest first. Earlier findings are never deleted — they are superseded.')}
