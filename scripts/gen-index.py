@@ -107,6 +107,7 @@ docs = [('brief/brief-en.html', 'Brief · EN', 'one-page shareable HTML'),
         ('pdf/report-en.pdf', 'PDF · EN', 'print layout'),
         ('pdf/report-cs.pdf', 'PDF · CS', 'tisková verze'),
         ('report.html', 'Full report', 'source of truth'),
+        ('findings.html', 'All findings', 'every claim, historized'),
         ('data.json', 'data.json', 'structured mirror')]
 doc_cards = '\n'.join(f'''
 <a href="{u}" class="block p-4 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">

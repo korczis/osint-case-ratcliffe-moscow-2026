@@ -179,4 +179,40 @@ for i, s in enumerate(srcs):
                    'Two outlets repeating one wire count as one source. Full per-claim grades live in the report evidence sections (§8.N).</p>'))
     page(f'src/s{i+1}.html', s['outlet'], 'Source', body)
 
+# ---------- claim/finding pages ----------
+def findings_of(snap):
+    out = []
+    for key, v in snap.items():
+        if isinstance(v, dict):
+            fl = v.get('findings') or v.get('new_findings')
+            if isinstance(fl, list):
+                for j, f in enumerate(fl):
+                    if isinstance(f, str):
+                        out.append((f'{key}-f{j+1}', key, f))
+    return out
+
+claims = findings_of(d)
+cl_rows = []
+for cid, sweep, txt in claims:
+    hist = history_for(lambda s, cid=cid: next((t for c, _k, t in findings_of(s) if c == cid), None), cid)
+    meth = d[sweep].get('method', '')
+    body = (card('Claim / finding', f'<p class="text-xs font-mono text-gray-400 mb-2">{e(cid)} · sweep <span class="text-gray-500">{e(sweep)}</span></p>'
+                 f'<p class="text-base text-gray-900 dark:text-white">{autolink(txt)}</p>')
+            + card('Collection method', f'<p class="text-sm text-gray-600 dark:text-gray-300">{autolink(meth)}</p>')
+            + card('History (from git)', timeline_html([(sh, dt, autolink(v)) for sh, dt, v in hist]))
+            + related(cid, corpus))
+    page(f'cl/{cid}.html', f'Finding {cid}', 'Claim / finding', body)
+    cl_rows.append(f'<li class="py-2"><a class="text-blue-600 dark:text-blue-500 hover:underline font-mono text-xs" href="cl/{cid}.html">{e(cid)}</a>'
+                   f'<span class="block text-sm text-gray-700 dark:text-gray-300 mt-0.5">{autolink(txt, depth=0)[:220]}{"…" if len(txt) > 220 else ""}</span></li>')
+
+groups = {}
+for cid, sweep, txt in claims:
+    groups.setdefault(sweep, 0); groups[sweep] += 1
+summary = ' · '.join(f'{k} ({v})' for k, v in groups.items())
+page('findings.html', 'All findings', f'{len(claims)} findings across {len(groups)} sweeps',
+     card('Sweeps', f'<p class="text-xs text-gray-500 dark:text-gray-400 font-mono">{e(summary)}</p>')
+     + card('Findings (newest sweep last)', '<ul class="divide-y divide-gray-100 dark:divide-gray-700">' + '\n'.join(cl_rows) + '</ul>'),
+     depth=0)
+
+print(f'claim pages: {len(claims)}')
 print(f'detail pages: {len(kj_ids)} kj, {len(hy_ids)} hy, {len(inds)} ind, {len(srcs)} src, {len(revs)} data.json revisions')
