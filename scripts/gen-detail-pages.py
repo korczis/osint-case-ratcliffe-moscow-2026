@@ -187,7 +187,9 @@ def findings_of(snap):
             fl = v.get('findings') or v.get('new_findings')
             if isinstance(fl, list):
                 for j, f in enumerate(fl):
-                    if isinstance(f, str):
+                    if isinstance(f, dict):
+                        f = ' — '.join(str(v) for k2, v in f.items() if isinstance(v, str))
+                    if isinstance(f, str) and f:
                         out.append((f'{key}-f{j+1}', key, f))
     return out
 
