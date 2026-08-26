@@ -25,6 +25,10 @@ Skill logic and the analytic rules live in `.claude/skills/update-case/` (`SKILL
 - `case.yaml` — case id, GDELT query, time window, Wayback watch URLs, forbidden terms
 - `scripts/`, `justfile` — tooling; run `just` to list
 - `.github/workflows/pages.yml` — renders PDFs, builds `_site/`, deploys GitHub Pages on push
+- site is fully data-driven: `scripts/gen-index.py` + `scripts/gen-detail-pages.py` generate the
+  landing and one cross-linked page per judgment/hypothesis/indicator/source, with history
+  timelines from the git history of `data.json` — never hand-edit `_site/`; keep IDs stable and
+  append (don't reorder) indicators
 
 ## Analytic rules (short form — full text in `.claude/skills/update-case/references/`)
 

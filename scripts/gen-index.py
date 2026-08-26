@@ -51,7 +51,7 @@ def conf_badge(c):
 kj = '\n'.join(f'''
 <div class="p-5 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
   <div class="flex items-center mb-2">
-    <span class="text-xs font-semibold text-gray-500 dark:text-gray-400 me-3">{e(k["id"])}</span>{conf_badge(k["confidence"])}
+    <a href="kj/{k["id"].lower()}.html" class="text-xs font-semibold text-blue-600 dark:text-blue-500 hover:underline me-3">{e(k["id"])} &rarr;</a>{conf_badge(k["confidence"])}
   </div>
   <p class="mb-2 font-semibold text-gray-900 dark:text-white">{e(k["statement"])}</p>
   <p class="text-sm text-gray-500 dark:text-gray-400">{e(k["support"])}</p>
@@ -59,7 +59,7 @@ kj = '\n'.join(f'''
 
 hyp = '\n'.join(f'''
 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 last:border-b-0">
-  <th scope="row" class="px-4 py-3 font-medium text-gray-900 dark:text-white whitespace-nowrap align-top">{e(h["id"])}</th>
+  <th scope="row" class="px-4 py-3 font-medium whitespace-nowrap align-top"><a href="hy/{h["id"].lower()}.html" class="text-blue-600 dark:text-blue-500 hover:underline">{e(h["id"])} &rarr;</a></th>
   <td class="px-4 py-3 align-top"><span class="font-medium text-gray-900 dark:text-white">{e(h["label"])}</span>
     <p class="mt-1 text-gray-500 dark:text-gray-400">{e(h["description"])}</p></td>
   <td class="px-4 py-3 align-top text-gray-500 dark:text-gray-400">{e(h.get("likelihood",""))}</td>
@@ -69,10 +69,10 @@ hyp = '\n'.join(f'''
 tl = '\n'.join(f'''
 <li class="mb-6 ms-4">
   <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
-  <time class="mb-1 text-xs font-normal leading-none text-gray-400 dark:text-gray-500">{e(t["date"])}</time>
+  <time class="mb-1 text-xs font-normal leading-none text-gray-400 dark:text-gray-500"><a href="tl/t{n+1}.html" class="hover:underline text-blue-600 dark:text-blue-500">{e(t["date"])} &rarr;</a></time>
   <p class="text-sm font-normal text-gray-900 dark:text-white">{e(t["event"])}</p>
   <span class="text-xs text-gray-400 dark:text-gray-500">{e(t.get("source",""))}</span>
-</li>''' for t in d['timeline'])
+</li>''' for n, t in enumerate(d['timeline']))
 
 def ent(x):
     name = x.get('name') or x.get('id', '')
@@ -82,15 +82,17 @@ def ent(x):
 persons = ''.join(ent(p) for p in d.get('entities', {}).get('persons', []))
 orgs = ''.join(ent(o) for o in d.get('entities', {}).get('organizations', []))
 
+def _itxt(x): return x if isinstance(x, str) else x.get('text', '')
 ind = '\n'.join(f'''
 <li class="flex items-start gap-2.5 py-2 text-sm text-gray-700 dark:text-gray-300">
-  <svg class="w-4 h-4 mt-0.5 shrink-0 text-blue-600 dark:text-blue-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M2.5 12s3.5-7 9.5-7 9.5 7 9.5 7-3.5 7-9.5 7-9.5-7-9.5-7z"/></svg>
-  <span>{e(i)}</span></li>''' for i in d['indicators_to_watch'])
+  <a href="ind/i{n+1}.html" class="shrink-0 mt-0.5 text-xs font-semibold text-blue-600 dark:text-blue-500 hover:underline">I{n+1} &rarr;</a>
+  <span>{e(_itxt(x))}</span></li>''' for n, x in enumerate(d['indicators_to_watch']))
 
 srcs = '\n'.join(
-    f'<li class="py-2"><a href="{e(s["url"])}" rel="noopener" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">{e(s["outlet"])}</a>'
-    f'<span class="text-gray-500 dark:text-gray-400"> — {e(s.get("title",""))}</span></li>'
-    for s in d.get('sources', []))
+    f'<li class="py-2"><a href="src/s{n+1}.html" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">{e(s["outlet"])}</a>'
+    f'<span class="text-gray-500 dark:text-gray-400"> — {e(s.get("title",""))}</span>'
+    f' <a href="{e(s["url"])}" rel="noopener" class="text-xs text-gray-400 hover:underline">[original]</a></li>'
+    for n, s in enumerate(d.get('sources', [])))
 
 chlog = '\n'.join(f'''
 <li class="mb-5 ms-4">

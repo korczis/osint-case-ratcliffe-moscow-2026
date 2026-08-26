@@ -23,6 +23,28 @@ if [ -n "$TERMS" ]; then
   done <<< "$TERMS"
   [ $hits = 0 ] && ok "no forbidden terms"
 fi
+# --- anti-drift doctrine gates (vs last committed data.json) ---
+if git rev-parse -q --verify HEAD >/dev/null 2>&1 && git cat-file -e HEAD:data.json 2>/dev/null; then
+  PREV=$(git show HEAD:data.json)
+  # changelog append-only: previous entries must be an unchanged prefix
+  a=$(printf '%s' "$PREV" | jq -c '.changelog'); b=$(jq -c ".changelog[0:$(printf '%s' "$PREV" | jq '.changelog|length')]" data.json)
+  [ "$a" = "$b" ] && ok "changelog is append-only" || bad "changelog rewritten (earlier entries changed/removed)"
+  # indicators append-only in order (texts of previous entries unchanged; status may change)
+  a=$(printf '%s' "$PREV" | jq -c '[.indicators_to_watch[] | if type=="object" then .text else . end]')
+  n=$(printf '%s' "$a" | jq 'length')
+  b=$(jq -c "[.indicators_to_watch[0:$n][] | if type==\"object\" then .text else . end]" data.json)
+  [ "$a" = "$b" ] && ok "indicators append-only, order stable" || bad "indicators reordered/removed (breaks I<n> page identity)"
+  # entity ids stable
+  a=$(printf '%s' "$PREV" | jq -c '[.key_judgments[].id, .alternative_hypotheses[].id]')
+  b=$(jq -c "[.key_judgments[0:$(printf '%s' "$PREV" | jq '.key_judgments|length')][].id, .alternative_hypotheses[0:$(printf '%s' "$PREV" | jq '.alternative_hypotheses|length')][].id]" data.json)
+  [ "$a" = "$b" ] && ok "KJ/H ids stable" || bad "KJ/H ids changed (breaks pages + cross-links)"
+  # timeline append-only
+  a=$(printf '%s' "$PREV" | jq -c '.timeline'); b=$(jq -c ".timeline[0:$(printf '%s' "$PREV" | jq '.timeline|length')]" data.json)
+  [ "$a" = "$b" ] && ok "timeline append-only" || bad "timeline entries rewritten/removed"
+  # last_updated monotonic
+  a=$(printf '%s' "$PREV" | jq -r '.last_updated'); b=$(jq -r '.last_updated' data.json)
+  [ "$b" \> "$a" ] || [ "$b" = "$a" ] && ok "last_updated monotonic ($b)" || bad "last_updated went backwards ($a -> $b)"
+fi
 for f in report/pdf/report-en.pdf report/pdf/report-cs.pdf; do
   [ -f "$f" ] && [ "$f" -nt "${f/report-/pdf-}" ] 2>/dev/null || true
   [ -f "$f" ] && ok "$f exists" || bad "$f missing (run 'just pdf')"

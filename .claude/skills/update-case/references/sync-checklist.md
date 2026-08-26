@@ -41,6 +41,19 @@
 </div>
 ```
 
+## Site layer (automatic — do not hand-edit)
+
+`just site` regenerates `_site/` entirely from `data.json` + `report.md` + git history:
+`scripts/gen-index.py` (landing) and `scripts/gen-detail-pages.py` (one page per key
+judgment `kj/`, hypothesis `hy/`, indicator `ind/`, source `src/`, each with a
+history timeline reconstructed from every committed revision of `data.json`).
+Consequences for updates:
+- keep entity `id`s stable (`KJ1`, `H2`); indicator order is the identity for `I<n>` pages —
+  append new indicators at the end, never reorder; closing one = set its object form
+  `{"id": "I<n>", "text": …, "status": "observed|refuted"}` (strings default to open)
+- every committed `data.json` state becomes a history entry — commit via `/publish` only
+- new sources appended to `sources[]` get a page automatically (`grade` field optional but preferred)
+
 ## Final gate
 
 - `jq -e . data.json`

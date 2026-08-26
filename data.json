@@ -2,7 +2,7 @@
   "report_id": "ratcliffe-moscow-2026",
   "title": "CIA Director John Ratcliffe's unannounced visit to Moscow",
   "created": "2026-08-26",
-  "last_updated": "2026-08-26T20:30:00Z",
+  "last_updated": "2026-08-26T22:35:00Z",
   "status": "in-progress",
   "classification": "OSINT / open-source only",
   "entities": {
@@ -177,7 +177,7 @@
       "id": "KJ1",
       "confidence": "High (dipped to Medium mid-investigation, restored after verification)",
       "statement": "Intelligence-to-intelligence channel (CIA <-> SVR/FSB), not a head-of-state meeting.",
-      "support": "Peskov's denial was unambiguous and repeated independently (TASS, WaPo). The 'Putin met Ratcliffe' framing traced back to a narrower Yunashev claim (Putin cancelled a large public event) inflated by secondary-source paraphrase."
+      "support": "Peskov's denial was unambiguous and repeated independently (TASS, WaPo). The 'Putin met Ratcliffe' framing traced back to a narrower Yunashev claim (Putin cancelled a large public event) inflated by secondary-source paraphrase. §8.10.1: Kremlin on-record confirmation — Peskov press-pool briefing 26 Aug (Interfax first, AP+Reuters wires; traced to primary, B2): intel-service contacts, no Putin meeting, Putin briefed. Caveat: Peskov is the sole named source for Putin's absence."
     },
     {
       "id": "KJ2",
@@ -201,7 +201,7 @@
       "id": "KJ5",
       "confidence": "Medium-High",
       "statement": "Choice of intelligence (not diplomatic) channel signals deniability / lower political cost amid stalled formal talks.",
-      "support": "Pattern consistent with 2021 Burns precedent as crisis back-channel."
+      "support": "Pattern consistent with 2021 Burns precedent as crisis back-channel. §8.10.2: reported US request that Ukraine pause strikes on Moscow/StPb/northern Russia 24-26 Aug — four outlets (CBS/Axios/Kyiv Independent/ABC), all anonymous sourcing, provenance likely converging on 1-2 briefers (C3); upgrade declined under the traced-primary rule."
     }
   ],
   "alternative_hypotheses": [
@@ -231,18 +231,71 @@
     }
   ],
   "indicators_to_watch": [
-    "Change in tempo of Russian strikes on Ukrainian infrastructure or Ukrainian strikes on Russian refineries (1-2 week window).",
-    "Announcement of new formal Russia-Ukraine-US talks within 2-4 weeks (would support H2).",
-    "Reports of American detainee releases (would support H3).",
-    "New US sanctions on Russia-Iran trade entities (would support H3/Iran angle).",
-    "Further unannounced high-level visits Moscow<->Washington (would indicate an ongoing back-channel vs. one-off).",
-    "Putin's own public statement (silent so far) — would signal political weight assigned to the meeting.",
-    "[New, top priority] Independent Western corroboration or denial of the Yunashev claim that Putin personally met Ratcliffe.",
-    "Any disclosure of the contents of Putin's decrees 605-607.",
-    "Confirmation or denial that the reported prospective POW exchange is linked to this visit.",
-    "Any US or Russian official statement naming Zimmerman specifically in connection with the Ratcliffe visit (currently zero official mentions -- traced only to an unsourced Ksenia Sobchak Telegram post).",
-    "Rescheduled date for the Witkoff/Kushner Kyiv visit (postponed, not cancelled; still not found as of the SS8.8.3 follow-up) and any follow-on Moscow leg -- clarifies whether it resumes independently of, or in coordination with, whatever Ratcliffe's visit initiated.",
-    "Primary-source verification of the iStories claim (SS8.8.2) that one of Putin's undisclosed decrees may have pardoned Zimmerman -- currently unconfirmed by this investigation; would be the strongest possible upgrade to KJ4/H3 if verified."
+    {
+      "id": "I1",
+      "text": "Change in tempo of Russian strikes on Ukrainian infrastructure or Ukrainian strikes on Russian refineries (1-2 week window).",
+      "status": "observed"
+    },
+    {
+      "id": "I2",
+      "text": "Announcement of new formal Russia-Ukraine-US talks within 2-4 weeks (would support H2).",
+      "status": "open"
+    },
+    {
+      "id": "I3",
+      "text": "Reports of American detainee releases (would support H3).",
+      "status": "open"
+    },
+    {
+      "id": "I4",
+      "text": "New US sanctions on Russia-Iran trade entities (would support H3/Iran angle).",
+      "status": "observed"
+    },
+    {
+      "id": "I5",
+      "text": "Further unannounced high-level visits Moscow<->Washington (would indicate an ongoing back-channel vs. one-off).",
+      "status": "open"
+    },
+    {
+      "id": "I6",
+      "text": "Putin's own public statement (silent so far) — would signal political weight assigned to the meeting.",
+      "status": "open"
+    },
+    {
+      "id": "I7",
+      "text": "[New, top priority] Independent Western corroboration or denial of the Yunashev claim that Putin personally met Ratcliffe.",
+      "status": "refuted"
+    },
+    {
+      "id": "I8",
+      "text": "Any disclosure of the contents of Putin's decrees 605-607.",
+      "status": "open"
+    },
+    {
+      "id": "I9",
+      "text": "Confirmation or denial that the reported prospective POW exchange is linked to this visit.",
+      "status": "refuted"
+    },
+    {
+      "id": "I10",
+      "text": "Any US or Russian official statement naming Zimmerman specifically in connection with the Ratcliffe visit (currently zero official mentions -- traced only to an unsourced Ksenia Sobchak Telegram post).",
+      "status": "open"
+    },
+    {
+      "id": "I11",
+      "text": "Rescheduled date for the Witkoff/Kushner Kyiv visit (postponed, not cancelled; still not found as of the SS8.8.3 follow-up) and any follow-on Moscow leg -- clarifies whether it resumes independently of, or in coordination with, whatever Ratcliffe's visit initiated.",
+      "status": "open"
+    },
+    {
+      "id": "I12",
+      "text": "Primary-source verification of the iStories claim (SS8.8.2) that one of Putin's undisclosed decrees may have pardoned Zimmerman -- currently unconfirmed by this investigation; would be the strongest possible upgrade to KJ4/H3 if verified.",
+      "status": "open"
+    },
+    {
+      "id": "I13",
+      "text": "Whether Ukrainian strikes on Moscow/St. Petersburg resume after the reported pause window (through 26 Aug) lapsed — sharpest tempo signal tied to the visit.",
+      "status": "open"
+    }
   ],
   "gdelt_sweep": {
     "method": "Live query against GDELT DOC 2.0 API (api.gdeltproject.org/api/v2/doc/doc), no key required. Query 'Ratcliffe Moscow', window 2026-08-25/26.",
@@ -329,6 +382,42 @@
       "url": "https://www.rferl.org/a/russia-us-cia-unannounced-rare-visit/33839330.html",
       "title": "CIA Director Ratcliffe's Surprise Moscow Trip Raises Questions Over Russia, Ukraine, Iran",
       "note": "fetch blocked HTTP 403, content only via search snippet"
+    },
+    {
+      "outlet": "Interfax",
+      "url": "https://www.interfax.ru/russia/1111330",
+      "title": "Peskov press-pool briefing: Ratcliffe met intelligence services, not Putin (first carrier, 12:31 MSK 26 Aug)",
+      "grade": "B2"
+    },
+    {
+      "outlet": "Axios",
+      "url": "https://www.axios.com/2026/08/25/cia-director-ratcliffe-visits-moscow",
+      "title": "Ratcliffe Moscow visit; US asked Ukraine to pause strikes (anonymous sourcing)",
+      "grade": "C3"
+    },
+    {
+      "outlet": "Ukrainska Pravda",
+      "url": "https://www.pravda.com.ua/eng/news/2026/08/26/8050365/",
+      "title": "Ukraine SOF strike on Lukoil refinery in Kstovo, night 25-26 Aug (official SOF statement)",
+      "grade": "B2"
+    },
+    {
+      "outlet": "AP (via KSAT)",
+      "url": "https://www.ksat.com/news/politics/2026/08/26/release-of-marine-veteran-from-russian-custody-turns-focus-to-other-detainees-with-health-concerns/",
+      "title": "Zimmerman still detained with health concerns (advocacy group Global Reach), 26 Aug",
+      "grade": "B2"
+    },
+    {
+      "outlet": "TASS",
+      "url": "https://tass.com/politics/2177701",
+      "title": "Lantratova: Russia-Ukraine preparing another 'quite big' POW exchange (no Ratcliffe link)",
+      "grade": "B2"
+    },
+    {
+      "outlet": "US Treasury",
+      "url": "https://home.treasury.gov/news/press-releases/sb0596",
+      "title": "OFAC 8th 2026 Iran shadow-banking action (E.O. 13902); VTB coordination the only Russia nexus",
+      "grade": "A1"
     }
   ],
   "verification_pass": {
@@ -503,6 +592,10 @@
     {
       "date": "2026-08-26T20:30:00Z",
       "change": "SS8.9 hourly re-sweep: iStories/Zimmerman attribution corrected (Meduza + unsourced Sobchak; secondary chain mis-counts decrees) -> 'attribution unreliable', KJ4 unchanged. Naryshkin logged as probable counterpart (Spectator, unsourced). Iran-angle commentator convergence noted as opinion, KJ3 unchanged. Putin statement, Witkoff/Kushner reschedule, talks announcement: still open."
+    },
+    {
+      "date": "2026-08-26T22:35:00Z",
+      "change": "SS8.10 full-cycle re-sweep (3 sweepers, 2 tracers, red-team 8/8 STRONG): Kremlin on-record confirmation of intel channel and Putin absence (Peskov pool briefing, primary, B2) — KJ1 High with sole-source caveat; US strike-pause request 4-outlet anonymous corroboration (C3) — KJ5 upgrade declined; I7+I9 closed refuted; I1 observed (Kstovo strike); I4 observed-weak (OFAC Iran-centric, primary fetched, VTB only Russia nexus); Zimmerman attribution split + AP still-detained countervailing; new I13 (post-pause strike resumption). Putin/decrees/Naryshkin/talks/Witkoff-Kushner still open."
     }
   ],
   "hourly_resweep_2230": {
@@ -521,5 +614,43 @@
       "https://www.mediaite.com/media/news/new-details-revealed-in-cia-director-john-ratcliffes-mysterious-moscow-visit-report/",
       "https://tass.com/world/2176663"
     ]
+  },
+  "resweep_20260827_0030": {
+    "method": "3 parallel indicator-sweeper agents (12 indicators, EN+RU, 48h-restricted searches), GDELT 21:54Z pull (244 articles, ~30 countries, tonechart rate-limited), Wayback watch, 2 source-tracer chains, red-team gate (8 changes, all STRONG, applied with 3 write-up conditions).",
+    "findings": [
+      "KJ1 corroborated by official primary: Peskov on-record pool briefing 26 Aug (Interfax 12:31 MSK; AP+Reuters wires) — intel contacts, no Putin meeting, Putin briefed. Sole-named-source caveat recorded.",
+      "KJ5 corroborated, upgrade declined: US strike-pause request carried by CBS/Axios/Kyiv Independent/ABC on anonymous sourcing only (C3, converging provenance likely).",
+      "I7 Yunashev corroboration -> refuted/closed (on-record Peskov denial x2 channels; zero Western corroboration; original claim was schedule-change only).",
+      "I9 POW-exchange linkage -> refuted (track pre-dates visit: 103-for-103 19 Aug, 10-for-10 24 Aug; Lantratova/TASS on record; no linking source).",
+      "I1 tempo -> observed: Kstovo/Lukoil SOF strike night 25-26 Aug (B2); 162 UAVs 26 Aug (C3 single-sourced); no baseline comparison run.",
+      "I4 -> observed-weak: OFAC 24 Aug action Iran-centric (primary sb0596 fetched); only Russia nexus is coordination with already-sanctioned VTB; no new Russian designations; KJ3 unchanged.",
+      "KJ4 attribution split: iStories decree-gap = corroborated negative finding (C3 evidence); Sobchak pardon theory = F3 unsourced. Countervailing: AP/Global Reach 26 Aug — Zimmerman still detained (refutes released, not pardoned-pending). KJ4 stays Low.",
+      "Negative: Putin silent (Peskov-only; state-TV channels not swept); decrees 605-607 undisclosed; Naryshkin unnamed (2025 phone channel only, C3); talks — Peskov on record \"no plans\" (A2); Ryabkov autumn track firewalled from KJ2; Witkoff/Kushner date still unknown; Wayback CIA digest unchanged 15 snapshots, BBC 1 capture/1 digest, Kremlin news path unarchived; no further unannounced visits.",
+      "New indicator I13: post-pause resumption of Moscow/StPb strikes."
+    ],
+    "sources": [
+      "Interfax",
+      "AP",
+      "Reuters wires",
+      "CBS",
+      "Axios",
+      "Kyiv Independent",
+      "ABC",
+      "Ukrainska Pravda/SOF",
+      "TASS/Lantratova",
+      "AP/Global Reach",
+      "US Treasury sb0596",
+      "Moscow Times",
+      "Meduza",
+      "RT/SVR"
+    ],
+    "red_team": {
+      "aggregate": "8/8 STRONG",
+      "conditions_applied": [
+        "Treasury sb0596 primary fetched before finalizing C7",
+        "Peskov flagged as sole named source for Putin-absence (C1/C3)",
+        "Strike-pause reframed as breadth-of-outlets, not proven breadth-of-sources (C2)"
+      ]
+    }
   }
 }
